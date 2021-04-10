@@ -1,6 +1,6 @@
 # Chrome Extension Aimless
 
-针对 Chrome 浏览器的一款插件。
+针对 Chrome 浏览器编写的一些扩展。
 
 ## Scripts
 
