@@ -1,15 +1,15 @@
 # Chrome Extension Aimless
 
-针对 Chrome 浏览器编写的一些扩展。
+针对 Chrome 浏览器编写的一些插件和油猴脚本。
 
 ## Scripts
 
 ```bash
 # 开发
-npm run start
+npm run start [--name <extension_name>]
 
 # 打包
-npm run build
+npm run build [--name <extension_name>]
 
 # 测试
 npm run test
