@@ -6,10 +6,10 @@
 
 ```bash
 # 开发
-npm run start [--name <extension_name>]
+npm run start [-- --name <extension_name>]
 
 # 打包
-npm run build [--name <extension_name>]
+npm run build [-- --name <extension_name>]
 
 # 测试
 npm run test
