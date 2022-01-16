@@ -1,5 +1,5 @@
 const path = require('path');
-const { readdirSync, existsSync } = require('fs');
+const { readdirSync } = require('fs');
 
 const { monkeyDir } = require('./config');
 
@@ -9,18 +9,24 @@ const resolve = (exports.resolve = (...p) => path.resolve(root, ...p));
 
 /**a
  * 生成插件的入口文件
- * @param {*} extensionName 插件名
- * @param {*} srcDir 插件目录
+ * @param {string} extensionName 插件名
+ * @param {string} srcDir 插件目录地址
+ * @param {string} bundler 可选的，指定打包工具
  * @returns
  */
-exports.generateEntry = (extensionName, srcDir) => {
+exports.generateEntry = (extensionName, srcDir, bundler) => {
   if (extensionName === monkeyDir) {
-    const scriptInputs = {};
+    const isRollup = bundler === 'rollup';
+    const scriptInputs = isRollup ? [] : {};
 
     readdirSync(srcDir).forEach(scriptName => {
-      Object.assign(scriptInputs, {
-        [`${monkeyDir}/${scriptName}/main`]: resolve(srcDir, scriptName, 'index.ts'),
-      });
+      if (isRollup) {
+        scriptInputs.push(`${srcDir}/${scriptName}/index.ts`);
+      } else {
+        Object.assign(scriptInputs, {
+          [`${monkeyDir}/${scriptName}/main`]: resolve(srcDir, scriptName, 'index.ts'),
+        });
+      }
     });
 
     return scriptInputs;
