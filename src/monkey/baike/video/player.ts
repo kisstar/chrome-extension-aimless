@@ -22,7 +22,8 @@ class Player {
   }
 
   el() {
-    return this.palyer;
+    // 如果播放器元素不存在则静默处理
+    return $('video');
   }
 
   isPaused() {
