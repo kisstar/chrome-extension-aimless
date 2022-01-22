@@ -36,7 +36,7 @@ function bindEvents(player: Player) {
         event.preventDefault();
         break;
       case shortcutKey.fullscreen:
-        $(config.fullscreenButton) && $(config.fullscreenButton).click();
+        player.fullscreen();
         event.preventDefault();
         break;
       case shortcutKey.muted:

@@ -81,6 +81,16 @@ class Player {
 
     this.palyer.currentTime = val;
   }
+
+  fullscreen() {
+    const { fullscreenElement } = document;
+
+    if (fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      this.palyer.requestFullscreen();
+    }
+  }
 }
 
 export default Player;

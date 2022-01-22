@@ -1,9 +1,6 @@
 import { KEY_CODE } from '../../../utils/keycode';
 
 const config = {
-  // 选择器
-  fullscreenButton: '.lark-fullscreen-button', // 播放器全屏按钮
-
   // 快捷键
   shortcutKey: {
     playToggle: KEY_CODE.space,
