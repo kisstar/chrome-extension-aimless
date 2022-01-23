@@ -1,7 +1,7 @@
 const path = require('path');
 const { readdirSync } = require('fs');
 
-const { monkeyDir } = require('./config');
+const { monkeyDir, ignoreScriptDirs } = require('./config');
 
 const root = (exports.root = process.cwd());
 
@@ -21,7 +21,8 @@ exports.generateEntry = (extensionName, srcDir, bundler) => {
 
     readdirSync(srcDir).forEach(scriptName => {
       if (isRollup) {
-        scriptInputs.push(`${srcDir}/${scriptName}/index.ts`);
+        !ignoreScriptDirs.includes(scriptName) &&
+          scriptInputs.push(`${srcDir}/${scriptName}/index.ts`);
       } else {
         Object.assign(scriptInputs, {
           [`${monkeyDir}/${scriptName}/main`]: resolve(srcDir, scriptName, 'index.ts'),
