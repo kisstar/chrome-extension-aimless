@@ -15,6 +15,7 @@ const config = {
   // 选项
   volumeStep: 0.1,
   timeStep: 5,
+  rateStep: 0.25,
 };
 
 export default config;

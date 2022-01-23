@@ -50,6 +50,20 @@ class Player {
     this.palyer.muted = val;
   }
 
+  playbackRate(val?: number) {
+    if (typeof val === 'undefined') {
+      return this.palyer.playbackRate;
+    }
+    if (val > 3) {
+      val = 3;
+    }
+    if (val < 0.5) {
+      val = 0.5;
+    }
+
+    this.palyer.playbackRate = val;
+  }
+
   volume(val?: number) {
     if (typeof val === 'undefined') {
       return this.palyer.volume;
