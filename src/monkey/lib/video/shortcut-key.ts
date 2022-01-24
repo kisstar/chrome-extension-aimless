@@ -1,7 +1,7 @@
-import config from './config';
 import type Player from './player';
+import type { Config } from './config';
 
-function bindEvents(player: Player) {
+function bindEvents(player: Player, config: Config) {
   const { shortcutKey } = config;
 
   // 采用 keyup 事件则无法及时阻止浏览器的默认行为

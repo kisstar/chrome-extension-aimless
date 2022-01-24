@@ -3,13 +3,13 @@
  */
 
 export const KEY_CODE = {
-  tab: 'Tab',
-  shiftLeft: 'ShiftLeft',
-  shiftRight: 'ShiftRight',
-  space: 'Space',
-  up: 'ArrowUp',
-  right: 'ArrowRight',
-  down: 'ArrowDown',
-  left: 'ArrowLeft',
-  enter: 'Enter',
+  TAB: 'Tab',
+  SHIFT_LEFT: 'ShiftLeft',
+  SHIFT_RIGHT: 'ShiftRight',
+  SPACE: 'Space',
+  ARROW_UP: 'ArrowUp',
+  ARROW_RIGHT: 'ArrowRight',
+  ARROW_DOWN: 'ArrowDown',
+  ARROW_LEFT: 'ArrowLeft',
+  ENTER: 'Enter',
 };
