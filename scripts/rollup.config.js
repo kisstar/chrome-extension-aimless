@@ -1,3 +1,5 @@
+import { dirname } from 'path';
+import fs from 'fs';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
@@ -18,12 +20,14 @@ if (!name) {
 
 const srcDir = resolve('src', monkeyDir);
 const input = generateEntry(monkeyDir, srcDir, 'rollup');
+const metaHeader = fs.readFileSync(resolve(dirname(input[0]), 'manifests.ts'));
 
 export default {
   input,
   output: [
     {
       file: `dist/monkey/${name}.js`,
+      banner: metaHeader,
       format: 'iife',
     },
   ],
