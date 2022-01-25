@@ -13,3 +13,7 @@ export const KEY_CODE = {
   ARROW_LEFT: 'ArrowLeft',
   ENTER: 'Enter',
 };
+
+export const COMBINED_KEY = {
+  SHIFTKEY: 'SHIFTKEY',
+};

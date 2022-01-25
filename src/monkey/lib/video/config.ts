@@ -1,4 +1,6 @@
-import { KEY_CODE } from '../../../utils/keycode';
+import { KEY_CODE, COMBINED_KEY } from '../../../utils/keycode';
+
+export const connector = '_';
 
 const config = {
   // 快捷键
@@ -8,6 +10,8 @@ const config = {
     volumeDown: KEY_CODE.ARROW_DOWN,
     timeIncrease: KEY_CODE.ARROW_RIGHT,
     timeDecrease: KEY_CODE.ARROW_LEFT,
+    rateUp: `${COMBINED_KEY.SHIFTKEY}${connector}${KEY_CODE.ARROW_UP}`,
+    rateDown: `${COMBINED_KEY.SHIFTKEY}${connector}${KEY_CODE.ARROW_DOWN}`,
     muted: KEY_CODE.SHIFT_RIGHT,
     fullscreen: KEY_CODE.ENTER,
   },

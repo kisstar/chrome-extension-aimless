@@ -1,5 +1,6 @@
 import type Player from './player';
-import type { Config } from './config';
+import { Config, connector } from './config';
+import { COMBINED_KEY, KEY_CODE } from '../../../utils';
 
 function bindEvents(player: Player, config: Config) {
   const { shortcutKey } = config;
@@ -14,21 +15,25 @@ function bindEvents(player: Player, config: Config) {
       return;
     }
 
-    switch (event.code) {
+    const shiftList = [KEY_CODE.SHIFT_LEFT, KEY_CODE.SHIFT_RIGHT];
+    const prefix = shiftKey && !shiftList.includes(event.code) ? COMBINED_KEY.SHIFTKEY : '';
+    const code = `${prefix ? prefix + connector : ''}${event.code}`;
+
+    switch (code) {
       case shortcutKey.playToggle:
         player.isPaused() ? player.play() : player.pause();
         event.preventDefault();
         break;
+      case shortcutKey.muted:
+        player.muted(!player.muted());
+        event.preventDefault();
+        break;
       case shortcutKey.volumeUp:
-        shiftKey
-          ? player.volume(player.volume() + config.volumeStep)
-          : player.playbackRate(player.playbackRate() + config.rateStep);
+        player.volume(player.volume() + config.volumeStep);
         event.preventDefault();
         break;
       case shortcutKey.volumeDown:
-        shiftKey
-          ? player.volume(player.volume() - config.volumeStep)
-          : player.playbackRate(player.playbackRate() - config.rateStep);
+        player.volume(player.volume() - config.volumeStep);
         event.preventDefault();
         break;
       case shortcutKey.timeDecrease:
@@ -39,12 +44,16 @@ function bindEvents(player: Player, config: Config) {
         player.currentTime(player.currentTime() + config.timeStep);
         event.preventDefault();
         break;
-      case shortcutKey.fullscreen:
-        player.fullscreen();
+      case shortcutKey.rateUp:
+        player.playbackRate(player.playbackRate() + config.rateStep);
         event.preventDefault();
         break;
-      case shortcutKey.muted:
-        player.muted(!player.muted());
+      case shortcutKey.rateDown:
+        player.playbackRate(player.playbackRate() - config.rateStep);
+        event.preventDefault();
+        break;
+      case shortcutKey.fullscreen:
+        player.fullscreen();
         event.preventDefault();
         break;
       default:
