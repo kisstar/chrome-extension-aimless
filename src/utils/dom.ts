@@ -2,4 +2,4 @@
  * DOM related
  */
 
-export const $ = document.querySelector.bind(document);
+export const $: typeof document.querySelector = document.querySelector.bind(document);

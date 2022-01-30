@@ -11,11 +11,19 @@ export interface VideoConfig {
   config?: IConfig;
 }
 
-const useVideo = (videoConfig: VideoConfig = {}) => {
+interface VideoResult {
+  player: IPlayer;
+}
+
+const useVideo = (videoConfig: VideoConfig = {}): VideoResult => {
   const setting = Object.assign({}, config, videoConfig.config);
   const player = videoConfig.player || Player.getInstance();
 
   registerShortcuts(player, setting);
+
+  return {
+    player,
+  };
 };
 
 export default useVideo;

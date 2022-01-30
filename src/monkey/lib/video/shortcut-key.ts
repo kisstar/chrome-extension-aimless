@@ -2,7 +2,7 @@ import type Player from './player';
 import { Config, connector } from './config';
 import { COMBINED_KEY, KEY_CODE } from '../../../utils';
 
-function bindEvents(player: Player, config: Config) {
+function registerShortcuts(player: Player, config: Config) {
   const { shortcutKey } = config;
 
   // 采用 keyup 事件则无法及时阻止浏览器的默认行为
@@ -62,4 +62,4 @@ function bindEvents(player: Player, config: Config) {
   });
 }
 
-export default bindEvents;
+export default registerShortcuts;

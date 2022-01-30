@@ -1,3 +1,6 @@
 import useVideo from '../lib/video';
+import registerShortcuts from './shortcut-key';
 
-useVideo();
+const { player } = useVideo();
+
+registerShortcuts(player);
