@@ -9,9 +9,11 @@ import argvParser from 'minimist';
 const { monkeyDir } = require('./config');
 const { resolve, generateEntry } = require('./shared');
 
+const { NODE_ENV } = process.env;
 const argv = argvParser(process.argv.slice(2));
 const name = argv.name || argv._[0];
 
+const isDevelopment = NODE_ENV !== 'production';
 const srcDir = resolve('src', monkeyDir);
 const inputs = generateEntry(monkeyDir, srcDir, 'rollup');
 
@@ -21,20 +23,20 @@ if (!name) {
   process.exit(1);
 }
 
-const input = inputs.filter(item => item.includes(`src/monkey/${name}/index.ts`));
+const input = inputs.filter(item => item.includes(`src/${monkeyDir}/${name}/index.ts`));
 const metaHeader = fs.readFileSync(resolve(dirname(input[0]), 'manifests.ts'));
 
 export default {
   input,
   output: [
     {
-      file: `dist/monkey/${name}.js`,
+      file: `${isDevelopment ? 'dist' : 'release'}/monkey/${name}.js`,
       banner: metaHeader,
       format: 'iife',
     },
   ],
   watch: {
-    include: `src/monkey/${name}`,
+    include: `src/${monkeyDir}/${name}`,
   },
   plugins: [typescript(), json(), commonjs(), nodeResolve()],
 };
