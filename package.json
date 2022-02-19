@@ -19,8 +19,7 @@
     "url": "https://github.com/kisstar/chrome-extension-aimless.git"
   },
   "dependencies": {
-    "jquery": "^3.5.0",
-    "moment": "~2.24.0"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",

@@ -1,9 +1,11 @@
-import { $ } from '../../../utils/dom';
-import logger from '../../../utils/log';
+import { $, isUndefined } from '../../../utils';
 
 class Player {
   private static instance: Player | null;
-  private constructor() {}
+
+  private constructor() {
+    //
+  }
 
   static getInstance() {
     if (!this.instance) {
@@ -14,16 +16,11 @@ class Player {
   }
 
   private get palyer(): HTMLVideoElement {
-    if ($('video')) {
-      return $('video');
-    } else {
-      logger.error('获取播放器失败');
-    }
+    return $('video');
   }
 
   el() {
-    // 如果播放器元素不存在则静默处理
-    return $('video');
+    return this.palyer;
   }
 
   isPaused() {
@@ -42,58 +39,75 @@ class Player {
     }
   }
 
-  muted(val?: boolean) {
-    if (typeof val === 'undefined') {
+  muted(val?: boolean): boolean {
+    if (isUndefined(val)) {
       return this.palyer.muted;
     }
 
     this.palyer.muted = val;
+
+    return val;
   }
 
-  playbackRate(val?: number) {
-    if (typeof val === 'undefined') {
+  playbackRate(val?: number): number {
+    if (isUndefined(val)) {
       return this.palyer.playbackRate;
     }
+
+    let playbackRate = val;
+
     if (val > 3) {
-      val = 3;
+      playbackRate = 3;
     }
     if (val < 0.5) {
-      val = 0.5;
+      playbackRate = 0.5;
     }
 
-    this.palyer.playbackRate = val;
+    this.palyer.playbackRate = playbackRate;
+
+    return playbackRate;
   }
 
-  volume(val?: number) {
-    if (typeof val === 'undefined') {
+  volume(val?: number): number {
+    if (isUndefined(val)) {
       return this.palyer.volume;
     }
+
+    let volume = val;
+
     if (val > 1) {
-      val = 1;
+      volume = 1;
     }
     if (val < 0) {
-      val = 0;
+      volume = 0;
     }
 
-    this.palyer.volume = val;
+    this.palyer.volume = volume;
+
+    return volume;
   }
 
   duration() {
     return this.palyer.duration;
   }
 
-  currentTime(val?: number) {
-    if (typeof val === 'undefined') {
+  currentTime(val?: number): number {
+    if (isUndefined(val)) {
       return this.palyer.currentTime;
     }
+
+    let currentTime = val;
+
     if (val > this.duration()) {
-      val = this.duration();
+      currentTime = this.duration();
     }
     if (val < 0) {
-      val = 0;
+      currentTime = 0;
     }
 
-    this.palyer.currentTime = val;
+    this.palyer.currentTime = currentTime;
+
+    return currentTime;
   }
 
   fullscreen() {

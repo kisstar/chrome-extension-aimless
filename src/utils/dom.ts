@@ -1,3 +1,5 @@
+import { isString } from './type-is';
+
 /**
  * DOM related
  */
@@ -13,7 +15,7 @@ export const $: typeof document.querySelector = document.querySelector.bind(docu
 export function appendContent<T extends Node>(el: HTMLElement, content: T | string) {
   const target = el;
 
-  if (typeof content === 'string') {
+  if (isString(content)) {
     target.textContent = content;
     return;
   }
