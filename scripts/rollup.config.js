@@ -1,5 +1,6 @@
 import { dirname } from 'path';
 import fs from 'fs';
+import fsPromises from 'fs/promises';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
@@ -41,6 +42,19 @@ export default {
     include: `src/${monkeyDir}/${name}/**`,
   },
   plugins: [
+    {
+      name: 'rawString',
+      async load(id) {
+        if (!/\w+\?raw$/.test(id)) {
+          return null;
+        }
+
+        const contetn = await fsPromises.readFile(id.slice(0, -4), 'utf-8');
+        const code = `export default ${JSON.stringify(contetn)};`;
+
+        return code;
+      },
+    },
     typescript(),
     json(),
     commonjs(),

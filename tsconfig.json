@@ -5,7 +5,7 @@
     "target": "es6",
     "noImplicitAny": false,
     "sourceMap": false,
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist/js",
     "baseUrl": ".",
     "paths": {
@@ -14,5 +14,6 @@
     },
     "noEmitOnError": true,
     "typeRoots": ["node_modules/@types"]
-  }
+  },
+  "include": ["src/**/*", "types/**/*"]
 }
