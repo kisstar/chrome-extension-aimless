@@ -4,6 +4,8 @@ import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import alias from '@rollup/plugin-alias';
 import argvParser from 'minimist';
 
 const { monkeyDir } = require('./config');
@@ -36,7 +38,19 @@ export default {
     },
   ],
   watch: {
-    include: `src/${monkeyDir}/${name}`,
+    include: `src/${monkeyDir}/${name}/**`,
   },
-  plugins: [typescript(), json(), commonjs(), nodeResolve()],
+  plugins: [
+    typescript(),
+    json(),
+    commonjs(),
+    nodeResolve(),
+    replace({
+      preventAssignment: true,
+      'process.env.NODE_ENV': JSON.stringify(isDevelopment ? 'development' : 'production'),
+    }),
+    alias({
+      entries: [{ find: '@utils', replacement: resolve('src/utils') }],
+    }),
+  ],
 };
