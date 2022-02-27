@@ -6,6 +6,8 @@ import { isString } from './type-is';
 
 export const $: typeof document.querySelector = document.querySelector.bind(document);
 
+export const $$: typeof document.querySelectorAll = document.querySelectorAll.bind(document);
+
 /**
  * 向元素中追加内容
  * @param el 追加目标

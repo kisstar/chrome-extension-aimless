@@ -1,3 +1,6 @@
+/**
+ * @deprecated 支持未登录复制
+ */
 import { appnedStyle } from '../../utils';
 import config from './config';
 
@@ -21,5 +24,5 @@ function handleCopy(event: ClipboardEvent) {
 }
 
 // main
-appnedStyle(styleContent);
+appnedStyle(styleContent, { className: config.styleClassName });
 window.addEventListener('copy', handleCopy);
