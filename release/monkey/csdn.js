@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN
 // @namespace    https://kisstar.xyz/
-// @version      0.0.1
+// @version      0.0.2
 // @description  支持未登录复制。
 // @author       Kisstar
 // @match        https://blog.csdn.net/*/article/*
@@ -25,6 +25,7 @@
    * DOM related
    */
   const $ = document.querySelector.bind(document);
+  const $$ = document.querySelectorAll.bind(document);
   /**
    * 向元素中追加内容
    * @param el 追加目标
@@ -67,9 +68,41 @@
   }
 
   const config = {
+    signModalSelector: '.passport-login-container',
+    signTipSelector: '#csdn-toolbar-profile-nologin',
+    showMoreBtnSelector: '.hide-preCode-box .look-more-preCode',
+    styleClassName: 'ks-monkey-csdn',
     copyrightReg: /\s————————————————\s版权声明(.|\s)*/,
   };
 
+  /**
+   * @description 隐藏登录提示和登陆模态框
+   */
+  // 通过追加样式隐藏默认展示的登录模态框
+  const styleContent$1 = `
+  ${config.signTipSelector} {
+    display: none;
+  }
+
+  ${config.signModalSelector} {
+    display: none;
+  }
+`.trim();
+  // main()
+  appnedStyle(styleContent$1, { className: config.styleClassName });
+
+  /**
+   * @description
+   */
+  function showMore() {
+    Array.from($$(config.showMoreBtnSelector)).forEach(item => item.click());
+  }
+  // // main()
+  showMore();
+
+  /**
+   * @deprecated 支持未登录复制
+   */
   const styleContent = `
 /* 代码块 */
 html #content_views pre code {
@@ -90,6 +123,6 @@ html .hljs-button.signin {
     event.preventDefault();
   }
   // main
-  appnedStyle(styleContent);
+  appnedStyle(styleContent, { className: config.styleClassName });
   window.addEventListener('copy', handleCopy);
 })();
