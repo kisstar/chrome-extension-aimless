@@ -1,5 +1,5 @@
 /**
- * @deprecated 支持未登录复制
+ * @description 支持未登录复制
  */
 import { appnedStyle } from '../../utils';
 import config from './config';
