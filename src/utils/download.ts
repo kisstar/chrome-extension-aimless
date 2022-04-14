@@ -1,7 +1,7 @@
 import { createEl } from './dom';
 
 interface DownloadOptions {
-  downloadType: 'tag' | 'fetch';
+  downloadType?: 'tag' | 'fetch';
   filename?: string;
   fileProp?: FilePropertyBag;
 }
@@ -46,7 +46,7 @@ export function downloadByFetch(url: string, filename: string, fileProp: FilePro
     });
 }
 
-export function downloader(url: string, options?: DownloadOptions) {
+export function download(url: string, options?: DownloadOptions) {
   const { filename, downloadType = 'fetch', fileProp } = options || {};
 
   if (downloadType === 'tag') {
