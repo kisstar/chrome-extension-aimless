@@ -16,3 +16,5 @@ declare module '*?raw' {
 
   export default value;
 }
+
+declare module '*.css';
