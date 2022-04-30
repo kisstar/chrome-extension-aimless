@@ -27,12 +27,12 @@ npm run test
 
 ## Tampermonkey Scripts
 
-| 名称                               | 说明                       |
-| :--------------------------------- | :------------------------- |
-| [baike](./src/monkey/baike/)       | 支持视频播放器的快捷操作。 |
-| [zhihu](./src/monkey/zhihu/)       | 自动隐藏登录弹窗。         |
-| [csdn](./src/monkey/csdn/)         | 支持未登录复制。           |
-| [bilibili](./src/monkey/bilibili/) | 支持视频下载。             |
+| 名称                               | 说明                             |
+| :--------------------------------- | :------------------------------- |
+| [baike](./src/monkey/baike/)       | 支持视频播放器的快捷操作等功能。 |
+| [zhihu](./src/monkey/zhihu/)       | 支持自动隐藏登录弹窗等功能。     |
+| [csdn](./src/monkey/csdn/)         | 支持未登录复制等功能。           |
+| [bilibili](./src/monkey/bilibili/) | 支持视频下载等功能。             |
 
 ## License
 
