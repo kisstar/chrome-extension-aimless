@@ -2,7 +2,7 @@
  * @description 获取 MP4 链接地址进行下载
  */
 
-import { download, IOS_UA } from '@utils';
+import { download, UA_IOS } from '@utils';
 
 const { __INITIAL_STATE__: initState } = window;
 const { videoData } = initState;
@@ -23,7 +23,7 @@ export default () => {
     headers: {
       accept: 'application/json, text/plain, */*',
       'accept-language': 'zh-CN,zh;q=0.9',
-      'user-agent': IOS_UA,
+      'user-agent': UA_IOS,
     },
   })
     .then(res => res.json())
