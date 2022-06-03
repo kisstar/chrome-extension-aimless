@@ -2,24 +2,25 @@
  * @description 获取 MP4 链接地址进行下载
  */
 
-import { download, UA_IOS } from '@utils';
+import { request, download, UA_IOS } from '@utils';
 
 const { __INITIAL_STATE__: initState } = window;
 const { videoData } = initState;
-const { aid = '', cid = '' } = videoData;
+const { aid = '', cid = '', title } = videoData;
 const paramList = [
   ['platform', 'html5'],
   ['otype', 'json'],
-  ['type', 'mp4'],
   ['html5', '1'],
   ['qn', '16'],
+  // required
+  ['type', 'mp4'],
   ['avid', aid],
   ['cid', cid],
 ];
-const params = new URLSearchParams(paramList).toString();
 
 export default () => {
-  fetch(`https://api.bilibili.com/x/player/playurl?${params}`, {
+  request(`https://api.bilibili.com/x/player/playurl`, {
+    params: paramList,
     headers: {
       accept: 'application/json, text/plain, */*',
       'accept-language': 'zh-CN,zh;q=0.9',
@@ -32,10 +33,9 @@ export default () => {
       const { durl = [] } = data;
       const urlInfo = durl[0];
       const { url = '' } = urlInfo;
-      const filename = document.title.replace('_哔哩哔哩_bilibili', '');
 
       download(url, {
-        filename: `${filename}.mp4`,
+        filename: `${title}.mp4`,
         fileProp: { type: 'video/mp4' },
       });
     })

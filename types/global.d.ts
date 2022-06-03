@@ -1,4 +1,5 @@
 interface VideoData {
+  title: string;
   aid: string;
   cid: string;
 }
