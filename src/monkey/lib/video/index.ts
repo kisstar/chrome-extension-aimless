@@ -16,7 +16,7 @@ interface VideoResult {
 }
 
 const useVideo = (videoConfig: VideoConfig = {}): VideoResult => {
-  const setting = Object.assign({}, config, videoConfig.config);
+  const setting = { ...config, ...videoConfig.config };
   const player = videoConfig.player || Player.getInstance();
 
   registerShortcuts(player, setting);

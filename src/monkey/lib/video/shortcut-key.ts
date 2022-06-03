@@ -6,7 +6,7 @@ function registerShortcuts(player: Player, config: Config) {
   const { shortcutKey } = config;
 
   // 采用 keyup 事件则无法及时阻止浏览器的默认行为
-  addEventListener('keydown', event => {
+  window.addEventListener('keydown', event => {
     const { activeElement } = document;
     const { shiftKey } = event;
 
@@ -21,7 +21,11 @@ function registerShortcuts(player: Player, config: Config) {
 
     switch (code) {
       case shortcutKey.playToggle:
-        player.isPaused() ? player.play() : player.pause();
+        if (player.isPaused()) {
+          player.play();
+        } else {
+          player.pause();
+        }
         event.preventDefault();
         break;
       case shortcutKey.muted:
