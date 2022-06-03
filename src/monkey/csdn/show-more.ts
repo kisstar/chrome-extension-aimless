@@ -9,5 +9,5 @@ function showMore() {
   Array.from($$<HTMLImageElement>(config.showMoreBtnSelector)).forEach(item => item.click());
 }
 
-// // main()
+// main()
 showMore();
