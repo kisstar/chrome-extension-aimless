@@ -4,6 +4,10 @@ import { isString } from './type-is';
  * DOM related
  */
 
+interface StyleOptions {
+  className?: string;
+}
+
 export const $: typeof document.querySelector = document.querySelector.bind(document);
 
 export const $$: typeof document.querySelectorAll = document.querySelectorAll.bind(document);
@@ -82,8 +86,4 @@ export function appnedStyle(styleContent: string, options: StyleOptions = {}) {
   $('head').appendChild(styleEl);
 
   return styleEl;
-}
-
-interface StyleOptions {
-  className?: string;
 }

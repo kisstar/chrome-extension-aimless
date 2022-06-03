@@ -12,15 +12,10 @@ interface DownloadOptions {
  * @param filename 文件名
  */
 export function downloadByTag(url: string, filename?: string) {
-  const aEl = createEl(
-    'a',
-    {
-      href: url,
-    },
-    {
-      download: filename || url,
-    },
-  );
+  const aEl = createEl('a', {
+    href: url,
+    download: filename || url,
+  });
 
   aEl.style.display = 'none';
   document.body.appendChild(aEl);
@@ -41,7 +36,7 @@ export function downloadByFetch(url: string, filename: string, fileProp: FilePro
     .then(fileData => {
       const objUrl = URL.createObjectURL(fileData);
 
-      downloadByTag(objUrl);
+      downloadByTag(objUrl, filename);
       URL.revokeObjectURL(objUrl);
     });
 }
