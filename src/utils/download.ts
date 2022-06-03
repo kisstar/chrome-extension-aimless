@@ -1,4 +1,5 @@
 import { createEl } from './dom';
+import { request } from './request';
 
 interface DownloadOptions {
   downloadType?: 'tag' | 'fetch';
@@ -30,7 +31,7 @@ export function downloadByTag(url: string, filename?: string) {
  * @param fileProp 文件属性
  */
 export function downloadByFetch(url: string, filename: string, fileProp: FilePropertyBag) {
-  fetch(url)
+  request(url)
     .then(res => res.blob())
     .then(blobData => new File([blobData], filename, fileProp))
     .then(fileData => {
