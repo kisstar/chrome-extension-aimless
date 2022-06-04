@@ -1,13 +1,15 @@
 const path = require('path');
 const { readdirSync } = require('fs');
-
 const { monkeyDir, ignoreScriptDirs } = require('./config');
 
-const root = (exports.root = process.cwd());
+const root = process.cwd();
+const resolve = (...p) => path.resolve(root, ...p);
 
-const resolve = (exports.resolve = (...p) => path.resolve(root, ...p));
+exports.root = root;
 
-/**a
+exports.resolve = resolve;
+
+/** a
  * 生成插件的入口文件
  * @param {string} extensionName 插件名
  * @param {string} srcDir 插件目录地址
@@ -21,8 +23,9 @@ exports.generateEntry = (extensionName, srcDir, bundler) => {
 
     readdirSync(srcDir).forEach(scriptName => {
       if (isRollup) {
-        !ignoreScriptDirs.includes(scriptName) &&
+        if (!ignoreScriptDirs.includes(scriptName)) {
           scriptInputs.push(`${srcDir}/${scriptName}/index.ts`);
+        }
       } else {
         Object.assign(scriptInputs, {
           [`${monkeyDir}/${scriptName}/main`]: resolve(srcDir, scriptName, 'index.ts'),

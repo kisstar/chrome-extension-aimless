@@ -1,4 +1,4 @@
-const PRE_CODE_REGEXP = /(.|\n)*\/\*{3}\/\s\(function\(module\,\sexports\)\s\{/;
+const PRE_CODE_REGEXP = /(.|\n)*\/\*{3}\/\s\(function\(module,\sexports\)\s\{/;
 const POST_CODE_REGEXP = /(\/\*{3}\/\s\}\)+(.|\n)*)/;
 
 /**
@@ -6,9 +6,9 @@ const POST_CODE_REGEXP = /(\/\*{3}\/\s\}\)+(.|\n)*)/;
  */
 class RemoveBootstrapWebpackPlugin {
   apply(compiler) {
-    compiler.plugin('emit', function (compilation, callback) {
+    compiler.plugin('emit', function onEmit(compilation, callback) {
       // compilation.assets 是一个包含所有需要输出的资源的键值对，键为需要输出的文件名称，值为文件对应的内容
-      const assets = compilation.assets;
+      const { assets } = compilation;
 
       Object.keys(assets).forEach(fileName => {
         const asset = assets[fileName];

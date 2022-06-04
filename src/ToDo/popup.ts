@@ -5,7 +5,7 @@ const queryInfo = {
   currentWindow: true,
 };
 
-$(function () {
+$(function onReady() {
   let currentColor = '#FF0000';
 
   $('#colorSelector').on('change', function setCurrentColor(event) {
@@ -13,7 +13,7 @@ $(function () {
   });
 
   $('#changeBackground').on('click', function changeColor() {
-    chrome.tabs.query(queryInfo, function (tabs) {
+    chrome.tabs.query(queryInfo, function handleQueriedTabs(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {
         color: currentColor,
       });
