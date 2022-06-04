@@ -1,22 +1,18 @@
 import { dirname } from 'path';
 import fs from 'fs';
-import fsPromises from 'fs/promises';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import alias from '@rollup/plugin-alias';
-import argvParser from 'minimist';
+import raw from '../plugins/rollup-plugin-raw';
+import uglify from '../plugins/rollup-plugin-uglify';
 
-const { monkeyDir } = require('./config');
+const { name, isDevelopment } = require('./preset');
+const { monkeyDir, monkeyBuildDir } = require('./config');
 const { resolve, generateEntry } = require('./shared');
 
-const { NODE_ENV } = process.env;
-const argv = argvParser(process.argv.slice(2));
-const name = argv.name || argv._[0];
-
-const isDevelopment = NODE_ENV !== 'production';
 const srcDir = resolve('src', monkeyDir);
 const inputs = generateEntry(monkeyDir, srcDir, 'rollup');
 
@@ -33,7 +29,7 @@ export default {
   input,
   output: [
     {
-      file: `${isDevelopment ? 'dist' : 'release'}/monkey/${name}.js`,
+      file: `${monkeyBuildDir}/${name}.js`,
       banner: metaHeader,
       format: 'iife',
     },
@@ -42,19 +38,7 @@ export default {
     include: `src/${monkeyDir}/${name}/**`,
   },
   plugins: [
-    {
-      name: 'rawString',
-      async load(id) {
-        if (!/\w+\?raw$/.test(id)) {
-          return null;
-        }
-
-        const contetn = await fsPromises.readFile(id.slice(0, -4), 'utf-8');
-        const code = `export default ${JSON.stringify(contetn)};`;
-
-        return code;
-      },
-    },
+    raw(),
     typescript(),
     json(),
     commonjs(),
@@ -66,5 +50,6 @@ export default {
     alias({
       entries: [{ find: '@utils', replacement: resolve('src/utils') }],
     }),
-  ],
+    !isDevelopment && uglify({ banner: metaHeader }),
+  ].filter(Boolean),
 };

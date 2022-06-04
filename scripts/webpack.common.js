@@ -1,12 +1,9 @@
 const { readdirSync, existsSync } = require('fs');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
-const argvParser = require('minimist');
-
+const { name } = require('./preset');
 const { resolve, generateEntry } = require('./shared');
 
-const argv = argvParser(process.argv.slice(2));
-const name = argv.name || argv._[0];
 const entry = {};
 const plugins = [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)];
 
