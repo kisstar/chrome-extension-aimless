@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config scripts/webpack.prod.js",
     "bundle:dev": "rollup -w --config scripts/rollup.config.js",
     "bundle": "cross-env NODE_ENV=production rollup --config scripts/rollup.config.js",
-    "postbundle": "prettier --write release/monkey/*.js",
+    "format": "prettier --write src/**/*.{ts,css}",
     "lint:es": "eslint . --ext .js,.ts",
     "test": "jest"
   },
@@ -46,9 +46,11 @@
     "minimist": "^1.2.5",
     "prettier": "^2.5.1",
     "rollup": "^2.63.0",
+    "shelljs": "^0.8.5",
     "ts-jest": "^25.2.1 ",
     "ts-loader": "^6.2.1",
     "typescript": "~3.8.3 ",
+    "uglify-js": "^3.15.5",
     "webpack": "^4.44.1",
     "webpack-cli": "~3.3.11",
     "webpack-merge": "~4.2.2"
