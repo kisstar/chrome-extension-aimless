@@ -9,7 +9,7 @@
     "bundle:dev": "rollup -w --config scripts/rollup.config.js",
     "bundle": "cross-env NODE_ENV=production rollup --config scripts/rollup.config.js",
     "postbundle": "prettier --write release/monkey/*.js",
-    "lint:es": "eslint src --ext .js,.ts",
+    "lint:es": "eslint . --ext .js,.ts",
     "test": "jest"
   },
   "author": "kisstar <dwh.chn@foxmail.com>",

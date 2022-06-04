@@ -21,16 +21,16 @@ const extensionInputs = readdirSync(resolve('src')).filter(
 );
 const extensionName = extensionInputs[0];
 
-extensionInputs.forEach(extensionName => {
-  const srcDir = resolve('src', extensionName);
-  const publicDir = resolve('public', extensionName);
+extensionInputs.forEach(extensionName_ => {
+  const srcDir = resolve('src', extensionName_);
+  const publicDir = resolve('public', extensionName_);
 
-  Object.assign(entry, generateEntry(extensionName, srcDir));
+  Object.assign(entry, generateEntry(extensionName_, srcDir));
 
   if (existsSync(publicDir)) {
     plugins.push(
       new CopyPlugin({
-        patterns: [{ from: extensionName, to: extensionName, context: 'public' }],
+        patterns: [{ from: extensionName_, to: extensionName_, context: 'public' }],
       }),
     );
   }
