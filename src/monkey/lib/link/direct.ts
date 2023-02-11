@@ -16,16 +16,16 @@ export const autoOpenDirectLink = () => {
 
     while (target !== bodyEl) {
       if (target.localName === 'a') {
-        let url = target.getAttribute('href');
+        const href = target.getAttribute('href');
+        let url = href;
 
-        if (url) {
+        // 知乎
+        url = url.replace(/https?:\/\/link.zhihu.com\/?\?target=/, '');
+        // 掘金
+        url = url.replace(/https?:\/\/link\.juejin\.cn\/?\?target=/, '');
+
+        if (url !== href) {
           e.preventDefault();
-
-          // 知乎
-          url = url.replace('https://link.zhihu.com/?target=', '');
-          // 掘金
-          url = url.replace('https://link.juejin.cn/?target=', '');
-
           window.open(decodeURIComponent(url));
         }
 
@@ -52,9 +52,13 @@ export const autoClickLinkButton = () => {
     const [site, selector] = selectorArr[i];
     const aEl = $<HTMLElement>(selector);
 
-    if (window.location.href.includes(site) && aEl) {
-      aEl.click();
-      break;
+    if (window.location.href.includes(site)) {
+      if (aEl) {
+        aEl.click();
+        break;
+      }
+
+      setTimeout(autoClickLinkButton, 500);
     }
   }
 };
