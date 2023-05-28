@@ -1,7 +1,7 @@
 /**
  * @description 支持未登录复制
  */
-import { appnedStyle } from '../../utils';
+import { $, appnedStyle } from '../../utils';
 import config from './config';
 
 const styleContent = `
@@ -25,4 +25,7 @@ function handleCopy(event: ClipboardEvent) {
 
 // main
 appnedStyle(styleContent, { className: config.styleClassName });
-window.addEventListener('copy', handleCopy);
+
+if ($(config.copyEventSelector)) {
+  $(config.copyEventSelector).addEventListener('copy', handleCopy);
+}
