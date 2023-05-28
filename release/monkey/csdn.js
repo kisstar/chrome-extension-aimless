@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN
 // @namespace    https://kisstar.xyz/
-// @version      0.0.2
+// @version      0.0.3
 // @description  支持未登录复制。
 // @author       Kisstar
 // @match        https://blog.csdn.net/*/article/*
@@ -9,101 +9,15 @@
 // @grant        none
 // @license      MIT License
 // ==/UserScript==
-
-(function () {
-  'use strict';
-
-  function is(className = 'Object') {
-    return function typeChecker(value) {
-      const type = `[object ${className}]`;
-      return Object.prototype.toString.call(value) === type;
-    };
-  }
-  const isString = is('String');
-
-  /**
-   * DOM related
-   */
-  const $ = document.querySelector.bind(document);
-  const $$ = document.querySelectorAll.bind(document);
-  /**
-   * 向元素中追加内容
-   * @param el 追加目标
-   * @param content 追加的内容
-   * @returns {void}
-   */
-  function appendContent(el, content) {
-    const target = el;
-    if (isString(content)) {
-      target.textContent = content;
-      return;
-    }
-    target.appendChild(content);
-  }
-  function createEl(tagName, properties = {}, attributes = {}, content = '') {
-    const el = document.createElement(tagName);
-    Object.getOwnPropertyNames(properties).forEach(function setProperty(propName) {
-      const val = properties[propName];
-      if (el[propName] !== val) {
-        el[propName] = val;
-      }
-    });
-    Object.getOwnPropertyNames(attributes).forEach(function setAttribute(attrName) {
-      el.setAttribute(attrName, attributes[attrName]);
-    });
-    appendContent(el, content);
-    return el;
-  }
-  /**
-   * 将指定的样式文本通过 style 添加到文档中
-   * @param styleContent 样式内容
-   * @returns {HTMLStyleElement}
-   */
-  function appnedStyle(styleContent, options = {}) {
-    const styleEl = createEl('style', options);
-    styleEl.type = 'text/css';
-    styleEl.innerHTML = styleContent;
-    $('head').appendChild(styleEl);
-    return styleEl;
-  }
-
-  const config = {
-    signModalSelector: '.passport-login-container',
-    signTipSelector: '#csdn-toolbar-profile-nologin',
-    showMoreBtnSelector: '.hide-preCode-box .look-more-preCode',
-    styleClassName: 'ks-monkey-csdn',
-    copyrightReg: /\s————————————————\s版权声明(.|\s)*/,
-  };
-
-  /**
-   * @description 隐藏登录提示和登陆模态框
-   */
-  // 通过追加样式隐藏默认展示的登录模态框
-  const styleContent$1 = `
-  ${config.signTipSelector} {
+!function(){"use strict";n="String";const r=function(e){var t=`[object ${n}]`;return Object.prototype.toString.call(e)===t};var n;const o=document.querySelector.bind(document),e=document.querySelectorAll.bind(document);function c(e,n={},t={},o=""){const c=document.createElement(e);Object.getOwnPropertyNames(n).forEach(function(e){var t=n[e];c[e]!==t&&(c[e]=t)}),Object.getOwnPropertyNames(t).forEach(function(e){c.setAttribute(e,t[e])});{const s=e=c;r(o)?s.textContent=o:s.appendChild(o)}return c}function t(e,t={}){const n=c("style",t);n.type="text/css",n.innerHTML=e,o("head").appendChild(n),n}const s={signModalSelector:".passport-login-container",signTipSelector:"#csdn-toolbar-profile-nologin",showMoreBtnSelector:".hide-preCode-box .look-more-preCode",styleClassName:"ks-monkey-csdn",copyrightReg:/\s————————————————\s版权声明(.|\s)*/,copyEventSelector:"#content_views"};t(`
+  ${s.signTipSelector} {
     display: none;
   }
 
-  ${config.signModalSelector} {
+  ${s.signModalSelector} {
     display: none;
   }
-`.trim();
-  // main()
-  appnedStyle(styleContent$1, { className: config.styleClassName });
-
-  /**
-   * @description
-   */
-  function showMore() {
-    Array.from($$(config.showMoreBtnSelector)).forEach(item => item.click());
-  }
-  // // main()
-  showMore();
-
-  /**
-   * @deprecated 支持未登录复制
-   */
-  const styleContent = `
+`.trim(),{className:s.styleClassName}),Array.from(e(s.showMoreBtnSelector)).forEach(e=>e.click()),t(`
 /* 代码块 */
 html #content_views pre code {
   user-select: text;
@@ -113,16 +27,4 @@ html #content_views pre code {
 html .hljs-button.signin {
   display: none;
 }
-`.trim();
-  function handleCopy(event) {
-    const selection = document.getSelection();
-    event.clipboardData.setData(
-      'text/plain',
-      selection.toString().replace(config.copyrightReg, ''),
-    );
-    event.preventDefault();
-  }
-  // main
-  appnedStyle(styleContent, { className: config.styleClassName });
-  window.addEventListener('copy', handleCopy);
-})();
+`.trim(),{className:s.styleClassName}),o(s.copyEventSelector)&&o(s.copyEventSelector).addEventListener("copy",function(e){const t=document.getSelection();e.clipboardData.setData("text/plain",t.toString().replace(s.copyrightReg,"")),e.preventDefault()});t("/* 侧边栏广告（左） */\n#footerRightAds {\n  display: none !important;\n}\n",{className:s.styleClassName})}();

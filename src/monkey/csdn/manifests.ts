@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN
 // @namespace    https://kisstar.xyz/
-// @version      0.0.2
+// @version      0.0.3
 // @description  支持未登录复制。
 // @author       Kisstar
 // @match        https://blog.csdn.net/*/article/*
