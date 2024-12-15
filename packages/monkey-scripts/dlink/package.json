@@ -1,0 +1,10 @@
+{
+  "name": "@chrome-extension-aimless/dlink",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "dependencies": {
+    "@chrome-extension-aimless/lib": "workspace:^"
+  }
+}

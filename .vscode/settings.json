@@ -1,18 +1,11 @@
 {
-  "[javascript]": {
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
+  "files.associations": {
+    "*.svg": "html"
   },
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
-  },
-  "eslint.validate": ["javascript", "typescript"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "editor.tabSize": 2,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": ["source.fixAll"],
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "react"],
+  "stylelint.validate": ["css"],
+  "cSpell.words": ["bilibili", "csdn", "dlink", "tampermonkey"]
 }

@@ -1,0 +1,5 @@
+/* 侧边栏广告（左） */
+/* stylelint-disable-next-line selector-id-pattern */
+#footerRightAds {
+  display: none !important;
+}

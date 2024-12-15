@@ -1,0 +1,10 @@
+{
+  "name": "@chrome-extension-aimless/zhihu",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "dependencies": {
+    "@chrome-extension-aimless/shared": "workspace:^"
+  }
+}
