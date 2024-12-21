@@ -5,10 +5,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev:core": "pnpm --filter @chrome-extension-aimless/core dev",
+    "dev:core": "pnpm --filter chrome-extension-aimless dev",
     "dev:ms": "node build/vite.build.mjs --watch",
-    "dev:test": "pnpm --filter @chrome-extension-aimless/core dev:test",
-    "build:core": "pnpm --filter @chrome-extension-aimless/core build",
+    "dev:test": "pnpm --filter chrome-extension-aimless dev:test",
+    "build:core": "pnpm --filter chrome-extension-aimless build",
     "build:ms": "node build/vite.build.mjs",
     "commit": "git-cz",
     "lint": "eslint",

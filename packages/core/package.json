@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-aimless/core",
+  "name": "chrome-extension-aimless",
   "description": "A highly scalable and multifunctional browser extension.",
   "private": true,
   "version": "0.0.0",
@@ -16,6 +16,7 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
+    "@chrome-extension-aimless/shared": "workspace:^",
     "@monaco-editor/react": "^4.6.0",
     "antd": "^5.22.5",
     "react": "^18.3.1",

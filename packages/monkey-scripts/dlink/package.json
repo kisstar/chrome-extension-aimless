@@ -1,10 +1,10 @@
 {
-  "name": "@chrome-extension-aimless/dlink",
+  "name": "@monkey-scripts/dlink",
   "version": "1.0.0",
   "type": "module",
   "main": "./index.ts",
   "module": "./index.ts",
   "dependencies": {
-    "@chrome-extension-aimless/lib": "workspace:^"
+    "@monkey-scripts/lib": "workspace:^"
   }
 }
