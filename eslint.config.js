@@ -1,13 +1,13 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import tsEslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-plugin-prettier/recommended';
 
-export default tseslint.config(
+export default tsEslint.config(
   { ignores: ['dist', '**/.output/', '**/.wxt/'] },
   {
     // specify the formats on which to apply the rules below
@@ -17,7 +17,7 @@ export default tseslint.config(
       // js
       js.configs.recommended,
       // ts
-      ...tseslint.configs.recommended,
+      ...tsEslint.configs.recommended,
       // react
       react.configs.flat.recommended,
       // a11y (accessibility

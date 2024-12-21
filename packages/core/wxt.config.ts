@@ -11,5 +11,8 @@ const resolve = (...paths: string[]) =>
 export default defineConfig({
   extensionApi: 'chrome',
   modules: ['@wxt-dev/module-react'],
-  outDir: resolve('.output')
+  outDir: resolve('.output'),
+  manifest: {
+    permissions: ['storage', 'unlimitedStorage']
+  }
 });
