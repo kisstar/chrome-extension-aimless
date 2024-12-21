@@ -9,6 +9,8 @@ const Home: React.FC = () => {
   const onClick: MenuProps['onClick'] = (menuInfo) => {
     if (MenuItemKey.ADD_REQUEST_CONFIG === menuInfo.key) {
       navigate('/request/add-config');
+    } else if (MenuItemKey.VIEW_REQUEST_CONFIG === menuInfo.key) {
+      navigate('/request/view-config');
     }
   };
 

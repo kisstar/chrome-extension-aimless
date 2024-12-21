@@ -25,12 +25,11 @@ const AddConfig: React.FC = () => {
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
     addConfig({
-      id: uuid(),
+      key: uuid(),
       request_url: values.request_url,
       response_content: values.response_content
     });
     form.resetFields();
-    console.log(values);
     messageApi.open({
       type: 'success',
       content: '添加成功'

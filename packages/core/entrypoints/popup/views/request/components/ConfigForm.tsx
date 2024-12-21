@@ -69,10 +69,10 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
         <Flex justify={'flex-end'}>
           <Space>
             <Button type="primary" htmlType="submit">
-              确认并继续添加
+              确认添加并继续
             </Button>
             <Button htmlType="button" onClick={onCancel}>
-              取消
+              返回
             </Button>
           </Space>
         </Flex>
