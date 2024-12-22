@@ -7,6 +7,7 @@
   "scripts": {
     "dev:core": "pnpm --filter @chrome-extension-aimless/core dev",
     "dev:ms": "node build/vite.build.mjs --watch",
+    "dev:test": "pnpm --filter @chrome-extension-aimless/core dev:test",
     "build:core": "pnpm --filter @chrome-extension-aimless/core build",
     "build:ms": "node build/vite.build.mjs",
     "commit": "git-cz",
@@ -23,6 +24,7 @@
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "@wxt-dev/module-react": "^1.1.1",
     "commitizen": "^4.3.1",
     "eslint": "^9.16.0",
@@ -36,6 +38,7 @@
     "husky": "^9.1.7",
     "inquirer": "9",
     "prettier": "^3.4.2",
+    "sass-embedded": "^1.83.0",
     "stylelint": "^16.11.0",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2",
