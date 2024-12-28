@@ -19,5 +19,3 @@ export const request = (url: string, options: RequestOptions = {}) => {
     headers
   });
 };
-
-export default {};
