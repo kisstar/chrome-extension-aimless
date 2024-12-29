@@ -9,6 +9,7 @@ import ConfigForm from '@/entrypoints/popup/views/request/components/ConfigForm'
 export type FieldType = {
   group: string;
   request_url: string;
+  request_method: string;
   response_content: string;
 };
 
@@ -20,6 +21,7 @@ const AddConfig: React.FC = () => {
   const initialValues = {
     group: 'system',
     request_url: '',
+    request_method: 'get',
     response_content: ''
   };
 
@@ -27,6 +29,7 @@ const AddConfig: React.FC = () => {
     addConfig({
       key: uuid(),
       request_url: values.request_url,
+      request_method: values.request_method,
       response_content: values.response_content
     });
     form.resetFields();

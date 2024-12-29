@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { createLocalStorage } from '@/shared';
+import type { Key } from 'react';
 import type { MenuItem } from '@/entrypoints/popup/constants';
 
 interface RequestConfigItem {
   key: string;
   request_url: string;
+  request_method: string;
   response_content: string;
 }
 
@@ -19,6 +21,7 @@ interface RequestStoreActions {
   getMenuItems: () => MenuItem[];
   setSelectedKeys: (keys: string[]) => void;
   getCurrentMenuItem(): RequestConfigItem | undefined;
+  deleteConfig: (key?: Key) => void;
 }
 
 export const useRequestStore = create<
@@ -65,6 +68,16 @@ export const useRequestStore = create<
        */
       setSelectedKeys(keys: string[]) {
         set({ selectedKeys: keys });
+      },
+
+      /**
+       * 删除配置
+       */
+      deleteConfig: (key?: Key) => {
+        set((state) => ({
+          list: state.list.filter((item) => item.key !== key),
+          selectedKeys: state.selectedKeys.filter((item) => item !== key)
+        }));
       }
     }),
     {

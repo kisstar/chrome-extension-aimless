@@ -1,11 +1,39 @@
 import { Menu, Splitter } from 'antd';
 import ReactJson from 'react-json-view';
 import { useRequestStore } from '@/entrypoints/popup/stores';
+import { isMenuDivider } from '@/shared';
+import MenuItemComp from '@/entrypoints/popup/views/request/components/MenuItem';
+import type { MenuItem } from '@/shared';
 
 const ViewConfig: React.FC = () => {
-  const { getMenuItems, getCurrentMenuItem, selectedKeys, setSelectedKeys } =
-    useRequestStore();
-  const menuItems = getMenuItems();
+  const {
+    getMenuItems,
+    getCurrentMenuItem,
+    selectedKeys,
+    setSelectedKeys,
+    deleteConfig
+  } = useRequestStore();
+
+  const handleDelete = (item: MenuItem) => {
+    const key = item?.key;
+
+    if (key) {
+      deleteConfig(key);
+    }
+  };
+
+  const menuItems = getMenuItems().map((item) => {
+    if (!isMenuDivider(item)) {
+      const nItem = {
+        ...item,
+        label: <MenuItemComp menuInfo={item} handleDelete={handleDelete} />
+      } as MenuItem;
+
+      return nItem;
+    }
+
+    return item;
+  });
 
   function setDefaultSelectedKeys() {
     if (menuItems.length && !selectedKeys.length) {
@@ -33,7 +61,7 @@ const ViewConfig: React.FC = () => {
   setDefaultSelectedKeys();
 
   return (
-    <Splitter style={{ width: 550 }}>
+    <Splitter style={{ width: 750 }}>
       <Splitter.Panel defaultSize="30%" min="20%" max="70%">
         <Menu
           mode="inline"

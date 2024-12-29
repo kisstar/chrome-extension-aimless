@@ -23,6 +23,17 @@ const layout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 20 }
 };
+const methodSelectOptions = [
+  { label: 'GET', value: 'get' },
+  { label: 'POST', value: 'post' },
+  { label: 'PUT', value: 'put' },
+  { label: 'DELETE', value: 'delete' },
+  { label: 'PATCH', value: 'patch' },
+  { label: 'HEAD', value: 'head' },
+  { label: 'OPTIONS', value: 'options' },
+  { label: 'TRACE', value: 'trace' },
+  { label: 'CONNECT', value: 'connect' }
+];
 
 const ConfigForm: React.FC<ConfigFormProps> = ({
   form,
@@ -55,6 +66,18 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
         rules={[{ required: true }]}
       >
         <Input />
+      </Form.Item>
+
+      <Form.Item
+        name="request_method"
+        label="请求方法"
+        rules={[{ required: true }]}
+      >
+        <Select
+          placeholder="Select a option and change input text above"
+          allowClear
+          options={methodSelectOptions}
+        ></Select>
       </Form.Item>
 
       <Form.Item
