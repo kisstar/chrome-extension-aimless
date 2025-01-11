@@ -32,12 +32,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.18.0
         version: 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.7.2)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.4
-        version: 4.3.4(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0))
       '@wxt-dev/module-react':
         specifier: ^1.1.1
-        version: 1.1.3(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0))(wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0))
+        version: 1.1.3(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1))(wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)(yaml@2.6.1))
       commitizen:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@22.10.2)(typescript@5.7.2)
@@ -71,6 +68,9 @@ importers:
       inquirer:
         specifier: '9'
         version: 9.3.7
+      lint-staged:
+        specifier: ^15.2.11
+        version: 15.2.11
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -94,10 +94,10 @@ importers:
         version: 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.7.2)
       vite:
         specifier: ^6.0.3
-        version: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)
+        version: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1)
       wxt:
         specifier: ^0.19.13
-        version: 0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)
+        version: 0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)(yaml@2.6.1)
 
   packages/core:
     dependencies:
@@ -1421,6 +1421,10 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
+  chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
   chalk@5.4.0:
     resolution: {integrity: sha512-ZkD35Mx92acjB2yNJgziGqT9oKHEOxjTBTDRpOsRWtdecL/0jM3z5kM/CTzHWvHIen1GvkM85p6TuFfDGfc8/Q==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
@@ -1524,6 +1528,10 @@ packages:
 
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
+
+  commander@12.1.0:
+    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
+    engines: {node: '>=18'}
 
   commander@2.9.0:
     resolution: {integrity: sha512-bmkUukX8wAOjHdN26xj5c4ctEV22TQ7dQYhSmuckKhToXrkUn0iIaolHdIxYYqD55nhpSPA9zPQ1yP57GdXP2A==}
@@ -2803,6 +2811,10 @@ packages:
   lighthouse-logger@2.0.1:
     resolution: {integrity: sha512-ioBrW3s2i97noEmnXxmUq7cjIcVRjT5HBpAYy8zE11CxU9HqlWHHeRxfeN1tn8F7OEMVPIC9x1f8t3Z7US9ehQ==}
 
+  lilconfig@3.1.3:
+    resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
+    engines: {node: '>=14'}
+
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
@@ -2812,6 +2824,11 @@ packages:
 
   linkedom@0.18.6:
     resolution: {integrity: sha512-6G8euAJ84s7MTXTli5JIOO5tzEpyoUBw2/zcqAunSurbCtC83YcgrK+VTcO8HZ/rdR3eaaZM573FP9rNo1uXIA==}
+
+  lint-staged@15.2.11:
+    resolution: {integrity: sha512-Ev6ivCTYRTGs9ychvpVw35m/bcNDuBN+mnTeObCL5h+boS5WzBEC6LHI4I9F/++sZm1m+J2LEiy0gxL/R9TBqQ==}
+    engines: {node: '>=18.12.0'}
+    hasBin: true
 
   listr2@8.2.5:
     resolution: {integrity: sha512-iyAZCeyD+c1gPyE9qpFu8af0Y+MRtmKOncdGoA2S5EY8iFq99dmmvkNnHiWo+pj0s7yH7l3KPIgee77tKpXPWQ==}
@@ -3297,6 +3314,11 @@ packages:
   picomatch@4.0.2:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
+
+  pidtree@0.6.0:
+    resolution: {integrity: sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==}
+    engines: {node: '>=0.10'}
+    hasBin: true
 
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
@@ -4072,6 +4094,10 @@ packages:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
 
+  string-argv@0.3.2:
+    resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
+    engines: {node: '>=0.6.19'}
+
   string-convert@0.2.1:
     resolution: {integrity: sha512-u/1tdPl4yQnPBjnVrmdLo9gtuLvELKsAoRapekWggdiQNvvvum+jYF329d84NAa660KQw7pB2n36KrIKVoXa3A==}
 
@@ -4642,6 +4668,11 @@ packages:
 
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+
+  yaml@2.6.1:
+    resolution: {integrity: sha512-7r0XPzioN/Q9kXBro/XPnA6kznR73DHq+GXh5ON7ZozRO6aMjbmiBuKste2wslTFkC5d1dw0GooOCepZXJ2SAg==}
+    engines: {node: '>= 14'}
+    hasBin: true
 
   yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
@@ -5592,14 +5623,14 @@ snapshots:
       '@typescript-eslint/types': 8.18.1
       eslint-visitor-keys: 4.2.0
 
-  '@vitejs/plugin-react@4.3.4(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0))':
+  '@vitejs/plugin-react@4.3.4(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)
+      vite: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -5613,10 +5644,10 @@ snapshots:
 
   '@webext-core/match-patterns@1.0.3': {}
 
-  '@wxt-dev/module-react@1.1.3(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0))(wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0))':
+  '@wxt-dev/module-react@1.1.3(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1))(wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)(yaml@2.6.1))':
     dependencies:
-      '@vitejs/plugin-react': 4.3.4(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0))
-      wxt: 0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)
+      '@vitejs/plugin-react': 4.3.4(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1))
+      wxt: 0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)(yaml@2.6.1)
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -5994,6 +6025,8 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
+  chalk@5.3.0: {}
+
   chalk@5.4.0: {}
 
   chardet@0.7.0: {}
@@ -6096,6 +6129,8 @@ snapshots:
   colorette@2.0.20: {}
 
   colorjs.io@0.5.2: {}
+
+  commander@12.1.0: {}
 
   commander@2.9.0:
     dependencies:
@@ -7545,6 +7580,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  lilconfig@3.1.3: {}
+
   lines-and-columns@1.2.4: {}
 
   lines-and-columns@2.0.4: {}
@@ -7556,6 +7593,21 @@ snapshots:
       html-escaper: 3.0.3
       htmlparser2: 9.1.0
       uhyphen: 0.2.0
+
+  lint-staged@15.2.11:
+    dependencies:
+      chalk: 5.3.0
+      commander: 12.1.0
+      debug: 4.4.0
+      execa: 8.0.1
+      lilconfig: 3.1.3
+      listr2: 8.2.5
+      micromatch: 4.0.8
+      pidtree: 0.6.0
+      string-argv: 0.3.2
+      yaml: 2.6.1
+    transitivePeerDependencies:
+      - supports-color
 
   listr2@8.2.5:
     dependencies:
@@ -8032,6 +8084,8 @@ snapshots:
   picomatch@2.3.1: {}
 
   picomatch@4.0.2: {}
+
+  pidtree@0.6.0: {}
 
   pkg-types@1.2.1:
     dependencies:
@@ -8919,6 +8973,8 @@ snapshots:
 
   stdin-discarder@0.2.2: {}
 
+  string-argv@0.3.2: {}
+
   string-convert@0.2.1: {}
 
   string-width@4.2.3:
@@ -9369,7 +9425,7 @@ snapshots:
       fsevents: 2.3.3
       sass-embedded: 1.83.0
 
-  vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0):
+  vite@6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1):
     dependencies:
       esbuild: 0.24.0
       postcss: 8.4.49
@@ -9379,6 +9435,7 @@ snapshots:
       fsevents: 2.3.3
       jiti: 1.21.7
       sass-embedded: 1.83.0
+      yaml: 2.6.1
 
   watchpack@2.4.1:
     dependencies:
@@ -9544,7 +9601,7 @@ snapshots:
 
   ws@8.18.0: {}
 
-  wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0):
+  wxt@0.19.22(@types/node@22.10.2)(rollup@4.29.1)(sass-embedded@1.83.0)(yaml@2.6.1):
     dependencies:
       '@1natsu/wait-element': 4.1.2
       '@aklinker1/rollup-plugin-visualizer': 5.12.0(rollup@4.29.1)
@@ -9588,7 +9645,7 @@ snapshots:
       publish-browser-extension: 2.3.0
       scule: 1.3.0
       unimport: 3.14.5(rollup@4.29.1)
-      vite: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)
+      vite: 6.0.5(@types/node@22.10.2)(jiti@1.21.7)(sass-embedded@1.83.0)(yaml@2.6.1)
       vite-node: 2.1.8(@types/node@22.10.2)(sass-embedded@1.83.0)
       web-ext-run: 0.2.2
       webextension-polyfill: 0.12.0
@@ -9622,6 +9679,8 @@ snapshots:
   yallist@3.1.1: {}
 
   yallist@4.0.0: {}
+
+  yaml@2.6.1: {}
 
   yargs-parser@20.2.9: {}
 
