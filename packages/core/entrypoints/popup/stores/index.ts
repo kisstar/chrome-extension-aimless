@@ -1,1 +1,4 @@
-export { useRequestStore } from '@/entrypoints/popup/stores/request';
+export {
+  useRequestStore,
+  type RequestPersistedState
+} from '@/entrypoints/popup/stores/request';

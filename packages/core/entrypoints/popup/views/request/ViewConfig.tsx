@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import { Menu, Splitter } from 'antd';
 import ReactJson from 'react-json-view';
 import { useRequestStore } from '@/entrypoints/popup/stores';
@@ -7,6 +8,7 @@ import type { MenuItem } from '@/shared';
 
 const ViewConfig: React.FC = () => {
   const {
+    list,
     getMenuItems,
     getCurrentMenuItem,
     selectedKeys,
@@ -22,18 +24,20 @@ const ViewConfig: React.FC = () => {
     }
   };
 
-  const menuItems = getMenuItems().map((item) => {
-    if (!isMenuDivider(item)) {
-      const nItem = {
-        ...item,
-        label: <MenuItemComp menuInfo={item} handleDelete={handleDelete} />
-      } as MenuItem;
+  const menuItems = useMemo(() => {
+    return getMenuItems().map((item) => {
+      if (!isMenuDivider(item)) {
+        const nItem = {
+          ...item,
+          label: <MenuItemComp menuInfo={item} handleDelete={handleDelete} />
+        } as MenuItem;
 
-      return nItem;
-    }
+        return nItem;
+      }
 
-    return item;
-  });
+      return item;
+    });
+  }, [list]);
 
   function setDefaultSelectedKeys() {
     if (menuItems.length && !selectedKeys.length) {

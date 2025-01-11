@@ -1,10 +1,10 @@
-import { registerInterceptors } from '@/entrypoints/content/request-interceptor';
+import { registerEvents } from '@/entrypoints/content/message';
 
 export default defineContentScript({
   matches: ['*://*/*', '<all_urls>'],
   runAt: 'document_start',
-  world: 'MAIN',
+  allFrames: true,
   main() {
-    registerInterceptors();
+    registerEvents();
   }
 });

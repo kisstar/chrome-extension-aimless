@@ -14,9 +14,9 @@ async function overrideResponseInterceptor(ctx: FetchResponseContext) {
 
   const resultResponse = new Response(
     `{
-      "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
-      "status": "success"
-  }`,
+        "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
+        "status": "success"
+    }`,
     {
       status: response.status,
       statusText: response.statusText,
@@ -31,9 +31,9 @@ async function overrideResponseInterceptor(ctx: FetchResponseContext) {
 
 async function overrideXMLHttpResponseInterceptor(ctx: XMLHttpResponseContext) {
   ctx.responseText = `{
-      "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
-      "status": "success"
-  }`;
+        "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
+        "status": "success"
+    }`;
 
   return ctx;
 }

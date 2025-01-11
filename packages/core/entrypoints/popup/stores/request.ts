@@ -1,15 +1,11 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { createLocalStorage } from '@/shared';
+import { REQUEST_CONFIG_PERSIST_KEY } from '@/constants';
+import { syncRequestConfigToContentContext } from '@/entrypoints/popup/message';
 import type { Key } from 'react';
 import type { MenuItem } from '@/entrypoints/popup/constants';
-
-interface RequestConfigItem {
-  key: string;
-  request_url: string;
-  request_method: string;
-  response_content: string;
-}
+import type { RequestConfigItem } from '@/types/request';
 
 interface RequestStoreState {
   list: RequestConfigItem[];
@@ -24,9 +20,11 @@ interface RequestStoreActions {
   deleteConfig: (key?: Key) => void;
 }
 
+export type RequestPersistedState = Pick<RequestStoreState, 'list'>;
+
 export const useRequestStore = create<
   RequestStoreState & RequestStoreActions,
-  [['zustand/persist', RequestStoreState]]
+  [['zustand/persist', RequestPersistedState]]
 >(
   persist(
     (set, get) => ({
@@ -81,8 +79,15 @@ export const useRequestStore = create<
       }
     }),
     {
-      name: 'local:CEA@request',
+      // store 在存储时会自动加上 local: 前缀，此处去掉这部分
+      name: REQUEST_CONFIG_PERSIST_KEY.slice('local:'.length),
+      partialize: (state) => ({ list: state.list }),
       storage: createJSONStorage(createLocalStorage)
     }
   )
 );
+
+// 每当请求配置发生变化时，同步到内容脚本中
+useRequestStore.subscribe((state) => {
+  syncRequestConfigToContentContext(state.list);
+});

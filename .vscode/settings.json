@@ -7,5 +7,12 @@
   "editor.formatOnSave": true,
   "eslint.validate": ["javascript", "react"],
   "stylelint.validate": ["css"],
-  "cSpell.words": ["bilibili", "csdn", "dlink", "tampermonkey"]
+  "cSpell.words": [
+    "bilibili",
+    "csdn",
+    "dlink",
+    "partialize",
+    "tampermonkey",
+    "webext"
+  ]
 }
