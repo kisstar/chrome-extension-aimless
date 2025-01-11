@@ -2,9 +2,9 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { createLocalStorage } from '@/shared';
 import { REQUEST_CONFIG_PERSIST_KEY } from '@/constants';
-import { syncRequestConfigToContentContext } from '@/entrypoints/popup/message';
+import { syncRequestConfigToContentContext } from '@/entrypoints/options/message';
 import type { Key } from 'react';
-import type { MenuItem } from '@/entrypoints/popup/constants';
+import type { MenuItem } from '@/types';
 import type { RequestConfigItem } from '@/types/request';
 
 interface RequestStoreState {

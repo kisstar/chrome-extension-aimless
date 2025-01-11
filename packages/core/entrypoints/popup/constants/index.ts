@@ -1,5 +1,1 @@
-export {
-  menuItems,
-  MenuItemKey,
-  type MenuItem
-} from '@/entrypoints/popup/constants/menu';
+export { menuItems, MenuItemKey } from '@/entrypoints/popup/constants/menu';

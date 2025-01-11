@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { Menu, Splitter } from 'antd';
 import ReactJson from 'react-json-view';
-import { useRequestStore } from '@/entrypoints/popup/stores';
+import { useRequestStore } from '@/entrypoints/options/stores';
 import { isMenuDivider } from '@/shared';
-import MenuItemComp from '@/entrypoints/popup/views/request/components/MenuItem';
+import MenuItemComp from '@/entrypoints/options/views/request/components/MenuItem';
 import type { MenuItem } from '@/shared';
 
 const ViewConfig: React.FC = () => {

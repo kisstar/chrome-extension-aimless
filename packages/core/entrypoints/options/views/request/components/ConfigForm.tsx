@@ -8,7 +8,7 @@ import {
   Space,
   type FormInstance
 } from 'antd';
-import type { FieldType } from '@/entrypoints/popup/views/request/AddConfig';
+import type { FieldType } from '@/entrypoints/options/views/request/AddConfig';
 
 interface ConfigFormProps {
   form: FormInstance<FieldType>;

@@ -1,6 +1,4 @@
-import type { MenuProps } from 'antd';
-
-export type MenuItem = Required<MenuProps>['items'][number];
+import type { MenuItem } from '@/types';
 
 export const enum MenuItemKey {
   ADD_REQUEST_CONFIG = '5f872e98-65a3-4afc-9274-39668505d057',

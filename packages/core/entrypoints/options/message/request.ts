@@ -1,4 +1,4 @@
-import { sendMessage } from 'webext-bridge/popup';
+import { sendMessage } from 'webext-bridge/options';
 import { CEA_REQUEST_SYNC_CONFIG } from '@/constants';
 import type { RequestConfigItem } from '@/types/request';
 

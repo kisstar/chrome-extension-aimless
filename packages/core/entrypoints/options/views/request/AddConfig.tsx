@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, message } from 'antd';
-import { useRequestStore } from '@/entrypoints/popup/stores';
+import { useRequestStore } from '@/entrypoints/options/stores';
 import { uuid } from '@/shared';
 import type { FormProps } from 'antd';
-import ConfigForm from '@/entrypoints/popup/views/request/components/ConfigForm';
+import ConfigForm from '@/entrypoints/options/views/request/components/ConfigForm';
 
 export type FieldType = {
   group: string;

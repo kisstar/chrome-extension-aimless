@@ -1,4 +1,4 @@
 export {
   useRequestStore,
   type RequestPersistedState
-} from '@/entrypoints/popup/stores/request';
+} from '@/entrypoints/options/stores/request';

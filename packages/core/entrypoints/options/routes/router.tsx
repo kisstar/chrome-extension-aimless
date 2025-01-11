@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '@/entrypoints/popup/views/home/Home';
-import RequestAddConfig from '@/entrypoints/popup/views/request/AddConfig';
-import ViewConfig from '@/entrypoints/popup/views/request/ViewConfig';
+import Home from '@/entrypoints/options/views/home/Home';
+import RequestAddConfig from '@/entrypoints/options/views/request/AddConfig';
+import ViewConfig from '@/entrypoints/options/views/request/ViewConfig';
 
 const router = createBrowserRouter([
   {
-    path: '/popup.html',
+    path: '/options.html',
     element: <Home />
   },
   {
