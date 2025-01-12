@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { createLocalStorage } from '@/shared';
 import { REQUEST_CONFIG_PERSIST_KEY } from '@/constants';
-import { syncRequestConfigToContentContext } from '@/entrypoints/options/message';
 import type { Key } from 'react';
 import type { MenuItem } from '@/types';
 import type { RequestConfigItem } from '@/types/request';
@@ -86,8 +85,3 @@ export const useRequestStore = create<
     }
   )
 );
-
-// 每当请求配置发生变化时，同步到内容脚本中
-useRequestStore.subscribe((state) => {
-  syncRequestConfigToContentContext(state.list);
-});
