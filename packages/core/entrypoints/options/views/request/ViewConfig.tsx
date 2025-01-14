@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
-import { Menu, Splitter } from 'antd';
+import { Button, Empty, Menu, Splitter, Typography } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import ReactJson from 'react-json-view';
+import { MenuPath } from '@/entrypoints/options/constants';
 import { useRequestStore } from '@/entrypoints/options/stores';
 import { isMenuDivider } from '@/shared';
 import MenuItemComp from '@/entrypoints/options/views/request/components/MenuItem';
@@ -15,6 +17,7 @@ const ViewConfig: React.FC = () => {
     setSelectedKeys,
     deleteConfig
   } = useRequestStore();
+  const navigate = useNavigate();
 
   const handleDelete = (item: MenuItem) => {
     const key = item?.key;
@@ -64,12 +67,11 @@ const ViewConfig: React.FC = () => {
   // Set default selected menu item
   setDefaultSelectedKeys();
 
-  return (
-    <Splitter style={{ width: 750 }}>
+  const content = (
+    <Splitter>
       <Splitter.Panel defaultSize="30%" min="20%" max="70%">
         <Menu
           mode="inline"
-          style={{ height: '100%' }}
           items={menuItems}
           defaultSelectedKeys={selectedKeys}
           onSelect={onSelect}
@@ -84,6 +86,23 @@ const ViewConfig: React.FC = () => {
       </Splitter.Panel>
     </Splitter>
   );
+  const emptyComp = (
+    <Empty
+      image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+      description={<Typography.Text>No Data</Typography.Text>}
+    >
+      <Button
+        type="primary"
+        onClick={() =>
+          navigate(`/${MenuPath.NETWORK_CONFIG}/${MenuPath.REQUEST_ADD}`)
+        }
+      >
+        去创建
+      </Button>
+    </Empty>
+  );
+
+  return menuItems.length ? content : emptyComp;
 };
 
 export default ViewConfig;

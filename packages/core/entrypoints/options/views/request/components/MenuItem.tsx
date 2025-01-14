@@ -28,7 +28,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuInfo, handleDelete }) => {
   );
 
   return isMenuDivider(menuInfo) ? null : (
-    <Popover content={PopContent} trigger="hover">
+    <Popover placement="topLeft" content={PopContent} trigger="hover">
       {label}
     </Popover>
   );

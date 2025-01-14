@@ -1,0 +1,33 @@
+.cea-main-layout {
+  height: 100%;
+
+  .ant-layout-header {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 1px 6px -1px rgba(0, 0, 0, 0.02),
+      0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    backdrop-filter: blur(8px);
+  }
+
+  .cea-main-layout {
+    &__title {
+      margin-left: 12px;
+    }
+
+    &__body {
+      margin-top: 40px;
+    }
+
+    &__aside-nav-1 {
+      height: 100%;
+    }
+
+    &__aside-nav-2 {
+      padding: 0 12px;
+      height: 100%;
+    }
+  }
+}

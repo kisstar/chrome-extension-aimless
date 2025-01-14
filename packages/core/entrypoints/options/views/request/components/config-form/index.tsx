@@ -9,6 +9,7 @@ import {
   type FormInstance
 } from 'antd';
 import type { FieldType } from '@/entrypoints/options/views/request/AddConfig';
+import '@/entrypoints/options/views/request/components/config-form/index.scss';
 
 interface ConfigFormProps {
   form: FormInstance<FieldType>;
@@ -43,14 +44,14 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
 }) => {
   return (
     <Form
-      style={{ width: 350 }}
-      {...layout}
+      className="cea-request-config-form"
       layout="horizontal"
+      {...layout}
       form={form}
       initialValues={initialValues}
       onFinish={onFinish}
     >
-      <Form.Item name="group" label="分组" rules={[{ required: true }]}>
+      <Form.Item name="group" label="分组">
         <Select
           placeholder="Select a option and change input text above"
           allowClear
@@ -68,11 +69,7 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
         <Input />
       </Form.Item>
 
-      <Form.Item
-        name="request_method"
-        label="请求方法"
-        rules={[{ required: true }]}
-      >
+      <Form.Item name="request_method" label="请求方法">
         <Select
           placeholder="Select a option and change input text above"
           allowClear
@@ -85,21 +82,19 @@ const ConfigForm: React.FC<ConfigFormProps> = ({
         label="返回内容"
         rules={[{ required: true }]}
       >
-        <TextArea rows={4} />
+        <TextArea rows={12} />
       </Form.Item>
 
-      <Form.Item>
-        <Flex justify={'flex-end'}>
-          <Space>
-            <Button type="primary" htmlType="submit">
-              确认添加并继续
-            </Button>
-            <Button htmlType="button" onClick={onCancel}>
-              返回
-            </Button>
-          </Space>
-        </Flex>
-      </Form.Item>
+      <Flex justify={'flex-end'}>
+        <Space>
+          <Button type="primary" htmlType="submit">
+            确认添加并继续
+          </Button>
+          <Button htmlType="button" onClick={onCancel}>
+            返回
+          </Button>
+        </Space>
+      </Flex>
     </Form>
   );
 };

@@ -16,6 +16,7 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.2",
     "@chrome-extension-aimless/shared": "workspace:^",
     "@monaco-editor/react": "^4.6.0",
     "antd": "^5.22.5",
