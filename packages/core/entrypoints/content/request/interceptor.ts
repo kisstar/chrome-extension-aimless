@@ -10,30 +10,21 @@ import type {
 } from '@chrome-extension-aimless/shared';
 
 async function overrideResponseInterceptor(ctx: FetchResponseContext) {
-  const { response } = ctx;
+  // const { response } = ctx;
 
-  const resultResponse = new Response(
-    `{
-        "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
-        "status": "success"
-    }`,
-    {
-      status: response.status,
-      statusText: response.statusText,
-      headers: response.headers
-    }
-  );
+  // const resultResponse = new Response('', {
+  //   status: response.status,
+  //   statusText: response.statusText,
+  //   headers: response.headers
+  // });
 
-  ctx.response = resultResponse;
+  // ctx.response = resultResponse;
 
   return ctx;
 }
 
 async function overrideXMLHttpResponseInterceptor(ctx: XMLHttpResponseContext) {
-  ctx.responseText = `{
-        "message": "https://images.dog.ceo/breeds/newfoundland/n02111277_3653.jpg1",
-        "status": "success"
-    }`;
+  // ctx.responseText = '';
 
   return ctx;
 }

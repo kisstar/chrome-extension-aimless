@@ -13,6 +13,19 @@ export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   outDir: resolve('.output'),
   manifest: {
-    permissions: ['storage', 'unlimitedStorage']
+    web_accessible_resources: [
+      {
+        resources: ['*'],
+        matches: ['*://*/*', '<all_urls>']
+      }
+    ],
+    permissions: [
+      // 本地存储
+      'storage',
+      'unlimitedStorage',
+      // 脚本注入
+      'scripting',
+      'activeTab'
+    ]
   }
 });
