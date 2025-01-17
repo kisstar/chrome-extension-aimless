@@ -1,6 +1,8 @@
 import { resolve as stlResolve, dirname } from 'path';
+import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { build } from 'vite';
+import banner from '../plugins/vite-plugin-banner/index.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,8 +23,18 @@ const libraries = monkeyScripts.map((name) => {
 });
 
 for (const lib of libraries) {
+  const metaHeader = readFileSync(
+    resolve(`packages/monkey-scripts/${lib.name}/manifests.ts`),
+    'utf-8'
+  );
+
   await build({
     configFile: false,
+    plugins: [
+      banner({
+        content: metaHeader
+      })
+    ],
     build: {
       watch: isWatchMode
         ? {

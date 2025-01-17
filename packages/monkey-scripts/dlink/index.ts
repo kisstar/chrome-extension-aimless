@@ -1,7 +1,4 @@
-import {
-  autoClickLinkButton,
-  autoOpenDirectLink
-} from '@chrome-extension-aimless/lib';
+import { autoClickLinkButton, autoOpenDirectLink } from '@monkey-scripts/lib';
 
 autoClickLinkButton();
 autoOpenDirectLink();
