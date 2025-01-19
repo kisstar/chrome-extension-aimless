@@ -2,3 +2,4 @@ packages:
   - 'packages/core'
   - 'packages/shared'
   - 'packages/monkey-scripts/*'
+  - 'packages/docs'

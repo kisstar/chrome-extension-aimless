@@ -8,8 +8,10 @@
     "dev:core": "pnpm --filter chrome-extension-aimless dev",
     "dev:ms": "node build/vite.build.mjs --watch",
     "dev:test": "pnpm --filter chrome-extension-aimless dev:test",
+    "dev:docs": "pnpm --filter @chrome-extension-aimless/docs dev",
     "build:core": "pnpm --filter chrome-extension-aimless build",
     "build:ms": "node build/vite.build.mjs",
+    "build:docs": "pnpm --filter @chrome-extension-aimless/docs build",
     "commit": "git-cz",
     "lint": "eslint",
     "stylelint": "stylelint packages/**/*.css --ignore-path .gitignore",
@@ -46,6 +48,7 @@
     "typescript-eslint": "^8.18.0",
     "vite": "^6.0.3",
     "vite-plugin-banner": "^0.8.0",
+    "vitepress": "^1.5.0",
     "wxt": "^0.19.13"
   },
   "config": {
