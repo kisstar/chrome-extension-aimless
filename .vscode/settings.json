@@ -14,6 +14,7 @@
     "partialize",
     "Sider",
     "tampermonkey",
+    "vitepress",
     "webext"
   ]
 }

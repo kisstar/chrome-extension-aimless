@@ -45,7 +45,7 @@ for (const lib of libraries) {
       lib: {
         ...lib
       },
-      outDir: resolve(`.output/monkey-scripts`)
+      outDir: resolve(`.output/scripts`)
     }
   });
 }

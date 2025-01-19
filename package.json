@@ -8,14 +8,16 @@
     "dev:core": "pnpm --filter chrome-extension-aimless dev",
     "dev:ms": "node build/vite.build.mjs --watch",
     "dev:test": "pnpm --filter chrome-extension-aimless dev:test",
-    "dev:docs": "pnpm --filter @chrome-extension-aimless/docs dev",
+    "dev:doc": "pnpm --filter @chrome-extension-aimless/docs dev",
     "build:core": "pnpm --filter chrome-extension-aimless build",
     "build:ms": "node build/vite.build.mjs",
-    "build:docs": "pnpm --filter @chrome-extension-aimless/docs build",
+    "build:doc": "pnpm --filter @chrome-extension-aimless/docs build",
     "commit": "git-cz",
     "lint": "eslint",
     "stylelint": "stylelint packages/**/*.css --ignore-path .gitignore",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build": "npm run build:doc && npm run build:ms",
+    "deploy": "npm run build && gh-pages -d .output"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
@@ -35,6 +37,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
+    "gh-pages": "^6.3.0",
     "globals": "^15.13.0",
     "husky": "^9.1.7",
     "inquirer": "9",

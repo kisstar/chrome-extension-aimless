@@ -8,13 +8,30 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [{ text: 'Monkey Scripts', link: '/monkey-scripts' }],
 
+    sidebar: [
+      {
+        text: 'Monkey Scripts',
+        items: [
+          { text: '知乎', link: '/monkey-scripts/zhihu.md' },
+          { text: 'CSDN', link: '/monkey-scripts/csdn.md' },
+          { text: 'D Link', link: '/monkey-scripts/dlink.md' }
+        ]
+      }
+    ],
+
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/kisstar/knives' }
+      {
+        icon: 'github',
+        link: 'https://github.com/kisstar/chrome-extension-aimless'
+      }
     ],
 
     footer: {
       message: 'Developed by Kisstar & Powered by VitePress.',
-      copyright: 'Copyright © 2023-present Kisstar'
+      copyright: 'Copyright © 2025-present Kisstar'
     }
-  }
+  },
+  // 编译配置
+  base: '/chrome-extension-aimless/',
+  outDir: '../../../.output'
 });

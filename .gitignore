@@ -16,7 +16,7 @@ dist
 .output
 .wxt
 web-ext.config.ts
-packages/docs/src/.vitepress/cache
+cache
 
 # Editor directories and files
 .DS_Store
