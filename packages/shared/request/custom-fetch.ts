@@ -6,6 +6,8 @@ import { runInterceptors } from './interceptor';
 
 export interface FetchResponseContext {
   response: Response;
+  readonly requestURL: RequestInfo | URL;
+  readonly requestMethod: string;
 }
 
 type ResponseInterceptor = (
@@ -29,6 +31,8 @@ async function customFetch(input: RequestInfo | URL, init?: RequestInit) {
   const ctx = await runInterceptors<FetchResponseContext>(
     responseInterceptors,
     {
+      requestURL: input,
+      requestMethod: init?.method || 'GET',
       response: response.clone()
     }
   );

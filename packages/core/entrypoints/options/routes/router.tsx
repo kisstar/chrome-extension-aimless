@@ -12,7 +12,7 @@ import { MainLayout } from '@/basic-components/layout';
 const router = createHashRouter([
   {
     path: '/',
-    element: <Navigate to={MenuPath.HOME} />
+    element: <Navigate to={MenuPath.NETWORK_CONFIG} />
   },
   {
     path: MenuPath.HOME,

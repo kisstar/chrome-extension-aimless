@@ -1,1 +1,4 @@
-export { registerEvents } from '@/entrypoints/content/message/request';
+export {
+  registerEvents,
+  getRequestConfig
+} from '@/entrypoints/content/message/request';
