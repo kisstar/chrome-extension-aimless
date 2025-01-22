@@ -56,8 +56,9 @@ class CustomXMLHttpRequest extends NativeXMLHttpRequest {
   private overrideOnreadystatechange() {
     const originalOnReadyStateChange = this.onreadystatechange;
 
-    this.responseContext = this.createResponseContext();
     this.onreadystatechange = (ev) => {
+      this.responseContext = this.createResponseContext();
+
       if (this.readyState === NativeXMLHttpRequest.DONE) {
         // 遍历执行响应拦截器
         runInterceptors<XMLHttpResponseContext>(

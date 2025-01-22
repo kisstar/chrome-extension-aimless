@@ -23,6 +23,9 @@ const getRequestConfig = () => {
   return userConfig;
 };
 
+// 初次加载时，同步请求配置
+syncRequestConfig();
+// 当页面可见时，同步请求配置
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
     syncRequestConfig();

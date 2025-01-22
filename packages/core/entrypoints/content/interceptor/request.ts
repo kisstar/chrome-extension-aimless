@@ -19,7 +19,8 @@ async function overrideResponseInterceptor(ctx: FetchResponseContext) {
   // 查找匹配的配置项
   const matchedConfig = userConfig.find((item) => {
     return (
-      item.request_method === requestMethod &&
+      item.request_method.toLocaleLowerCase() ===
+        requestMethod.toLocaleLowerCase() &&
       (item.request_url === '*' ||
         fetchUrl.includes(item.request_url) ||
         item.request_url.includes(fetchUrl))
@@ -27,9 +28,17 @@ async function overrideResponseInterceptor(ctx: FetchResponseContext) {
   });
 
   if (matchedConfig) {
-    const resultResponse = new Response('', {
+    // const stream = new ReadableStream({
+    //   start(controller) {
+    //     controller.enqueue(
+    //       new TextEncoder().encode(matchedConfig.response_content)
+    //     );
+    //     controller.close();
+    //   }
+    // });
+    const resultResponse = new Response(matchedConfig.response_content, {
       status: response.status,
-      statusText: matchedConfig.response_content,
+      statusText: response.statusText,
       headers: response.headers
     });
 
@@ -48,7 +57,8 @@ async function overrideXMLHttpResponseInterceptor(ctx: XMLHttpResponseContext) {
   // 查找匹配的配置项
   const matchedConfig = userConfig.find((item) => {
     return (
-      item.request_method === requestMethod &&
+      item.request_method.toLocaleLowerCase() ===
+        requestMethod.toLocaleLowerCase() &&
       (item.request_url === '*' ||
         fetchUrl.includes(item.request_url) ||
         item.request_url.includes(fetchUrl))
