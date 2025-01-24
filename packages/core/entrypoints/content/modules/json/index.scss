@@ -1,0 +1,11 @@
+@use '@/basic-components/json-editor/index.scss' as *;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.csa-json-editor {
+  box-sizing: border-box;
+}

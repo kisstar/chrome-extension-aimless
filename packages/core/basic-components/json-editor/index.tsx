@@ -8,13 +8,15 @@ import './index.scss';
 interface JsonEditorProps {
   code: object | string;
   onParseError?: (error: unknown) => void;
+  onChange?: OnChange;
 }
 
 type EditorMode = 'raw' | 'view' | 'edit';
 
 const JsonEditor: React.FC<JsonEditorProps> = ({
   code,
-  onParseError
+  onParseError,
+  onChange
 }: JsonEditorProps) => {
   const [mode, setMode] = useState<EditorMode>('view');
 
@@ -37,9 +39,6 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
 
   const onEditorDidMount: OnMount = (editor) => {
     editor.focus();
-  };
-  const onChange: OnChange = () => {
-    // console.log('onChange', newValue);
   };
 
   return (
