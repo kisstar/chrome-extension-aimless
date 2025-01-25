@@ -42,6 +42,7 @@
     "husky": "^9.1.7",
     "inquirer": "9",
     "lint-staged": "^15.2.11",
+    "monaco-editor": "^0.52.2",
     "prettier": "^3.4.2",
     "sass-embedded": "^1.83.0",
     "stylelint": "^16.11.0",

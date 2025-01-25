@@ -3,6 +3,7 @@ import { ConfigProvider, Radio } from 'antd';
 import ReactJson from 'react-json-view';
 import Editor, { type OnMount, type OnChange } from '@monaco-editor/react';
 import { isString } from '@/shared';
+import './preload';
 import './index.scss';
 
 type EditorMode = 'raw' | 'view' | 'edit';

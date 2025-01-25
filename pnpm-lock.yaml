@@ -74,6 +74,9 @@ importers:
       lint-staged:
         specifier: ^15.2.11
         version: 15.2.11
+      monaco-editor:
+        specifier: ^0.52.2
+        version: 0.52.2
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
