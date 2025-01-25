@@ -5,20 +5,22 @@ import Editor, { type OnMount, type OnChange } from '@monaco-editor/react';
 import { isString } from '@/shared';
 import './index.scss';
 
+type EditorMode = 'raw' | 'view' | 'edit';
+
 interface JsonEditorProps {
+  defaultMode?: EditorMode;
   code: object | string;
   onParseError?: (error: unknown) => void;
   onChange?: OnChange;
 }
 
-type EditorMode = 'raw' | 'view' | 'edit';
-
 const JsonEditor: React.FC<JsonEditorProps> = ({
+  defaultMode,
   code,
   onParseError,
   onChange
 }: JsonEditorProps) => {
-  const [mode, setMode] = useState<EditorMode>('view');
+  const [mode, setMode] = useState<EditorMode>(defaultMode || 'view');
 
   const codeStr = useMemo(() => {
     if (isString(code)) return code;

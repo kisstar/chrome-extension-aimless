@@ -7,6 +7,7 @@ import '@/basic-components/layout/main-layout/index.scss';
 const { Header, Content, Sider } = Layout;
 
 interface MainLayoutProps {
+  headerNav?: MenuItem[];
   asideNav?: MenuItem[];
   subAsideNav?: MenuItem[];
 }
@@ -30,9 +31,14 @@ function findSelectedKey(items?: MenuItem[], pathname = '') {
   })[0]?.key;
 }
 
-const App: React.FC<MainLayoutProps> = ({ asideNav, subAsideNav }) => {
+const App: React.FC<MainLayoutProps> = ({
+  headerNav,
+  asideNav,
+  subAsideNav
+}) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const headerMenuSelectedKeys = [findSelectedKey(headerNav, pathname) + ''];
   const asideMenuSelectedKeys = [findSelectedKey(asideNav, pathname) + ''];
   const subAsideMenuSelectedKeys = [
     findSelectedKey(subAsideNav, pathname) + ''
@@ -50,10 +56,18 @@ const App: React.FC<MainLayoutProps> = ({ asideNav, subAsideNav }) => {
     >
       <Layout className="cea-main-layout">
         <Header>
-          <img src="/logo.svg" alt="logo" />
-          <span className="cea-main-layout__title">
-            Nothing Means Everything
-          </span>
+          <div className="cea-main-layout__brand">
+            <img src="/logo.svg" alt="logo" />
+            <span className="cea-main-layout__title">
+              Nothing Means Everything
+            </span>
+          </div>
+          <Menu
+            mode="horizontal"
+            items={headerNav}
+            defaultSelectedKeys={headerMenuSelectedKeys}
+            onSelect={({ key }) => navigate(`/${key}`)}
+          />
         </Header>
         <Layout className="cea-main-layout__body">
           <Sider width={124}>

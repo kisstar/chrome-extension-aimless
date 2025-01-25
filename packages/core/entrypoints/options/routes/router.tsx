@@ -1,13 +1,19 @@
 import { createHashRouter, Navigate } from 'react-router-dom';
 import {
   MenuPath,
+  headerNav,
   asideNav,
-  subAsideNav
+  subAsideNav,
+  toolAsideNav,
+  toolSubAsideNav
 } from '@/entrypoints/options/constants';
+import { MainLayout } from '@/basic-components/layout';
 import Home from '@/entrypoints/options/views/home/Home';
+// config
 import RequestAddConfig from '@/entrypoints/options/views/request/AddConfig';
 import ViewConfig from '@/entrypoints/options/views/request/ViewConfig';
-import { MainLayout } from '@/basic-components/layout';
+// tools
+import JsonTool from '@/entrypoints/options/views/tools/json/Json';
 
 const router = createHashRouter([
   {
@@ -20,7 +26,13 @@ const router = createHashRouter([
   },
   {
     path: MenuPath.NETWORK_CONFIG,
-    element: <MainLayout asideNav={asideNav} subAsideNav={subAsideNav} />,
+    element: (
+      <MainLayout
+        headerNav={headerNav}
+        asideNav={asideNav}
+        subAsideNav={subAsideNav}
+      />
+    ),
     children: [
       {
         path: MenuPath.REQUEST_ADD,
@@ -29,6 +41,22 @@ const router = createHashRouter([
       {
         path: MenuPath.REQUEST_VIEW,
         element: <ViewConfig />
+      }
+    ]
+  },
+  {
+    path: MenuPath.NORMAL_TOOL,
+    element: (
+      <MainLayout
+        headerNav={headerNav}
+        asideNav={toolAsideNav}
+        subAsideNav={toolSubAsideNav}
+      />
+    ),
+    children: [
+      {
+        path: MenuPath.TOOL_JSON,
+        element: <JsonTool />
       }
     ]
   }

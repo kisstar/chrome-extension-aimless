@@ -1,5 +1,8 @@
 export {
   MenuPath,
+  headerNav,
   asideNav,
-  subAsideNav
+  subAsideNav,
+  toolAsideNav,
+  toolSubAsideNav
 } from '@/entrypoints/options/constants/menu';

@@ -4,6 +4,7 @@
   .ant-layout-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: #ffffff;
     box-shadow:
       0 1px 2px 0 rgba(0, 0, 0, 0.03),
@@ -12,22 +13,25 @@
     backdrop-filter: blur(8px);
   }
 
-  .cea-main-layout {
-    &__title {
-      margin-left: 12px;
-    }
+  &__brand {
+    display: flex;
+    align-items: center;
+  }
 
-    &__body {
-      margin-top: 40px;
-    }
+  &__title {
+    margin-left: 12px;
+  }
 
-    &__aside-nav-1 {
-      height: 100%;
-    }
+  &__body {
+    margin-top: 40px;
+  }
 
-    &__aside-nav-2 {
-      padding: 0 12px;
-      height: 100%;
-    }
+  &__aside-nav-1 {
+    height: 100%;
+  }
+
+  &__aside-nav-2 {
+    padding: 0 12px;
+    height: 100%;
   }
 }
