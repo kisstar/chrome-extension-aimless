@@ -11,7 +11,10 @@ import type {
 import { useRequestStore } from '@/entrypoints/content/stores';
 
 async function overrideResponseInterceptor(ctx: FetchResponseContext) {
-  const { getRequestConfig } = useRequestStore();
+  const { isReady, getRequestConfig } = useRequestStore();
+
+  await isReady.promise;
+
   const userConfig = getRequestConfig();
   const { response, requestMethod, requestURL } = ctx;
   const fetchUrl = requestURL.toString();
@@ -49,7 +52,10 @@ async function overrideResponseInterceptor(ctx: FetchResponseContext) {
 }
 
 async function overrideXMLHttpResponseInterceptor(ctx: XMLHttpResponseContext) {
-  const { getRequestConfig } = useRequestStore();
+  const { isReady, getRequestConfig } = useRequestStore();
+
+  await isReady.promise;
+
   const userConfig = getRequestConfig();
   const { requestMethod, requestURL } = ctx;
   const fetchUrl = requestURL.toString();
