@@ -19,6 +19,7 @@ export const enum MenuPath {
   TOOL_JSON = 'json'
 }
 
+// 头部导航菜单
 export const headerNav: MenuItem[] = [
   {
     icon: <ToolOutlined />,
@@ -27,6 +28,7 @@ export const headerNav: MenuItem[] = [
   }
 ];
 
+// 配置页侧边导航菜单
 export const asideNav: MenuItem[] = [
   {
     icon: <GlobalOutlined />,
@@ -48,6 +50,7 @@ export const subAsideNav: MenuItem[] = [
   }
 ];
 
+// 工具页侧边导航菜单
 export const toolAsideNav: MenuItem[] = [
   {
     icon: <RadarChartOutlined />,

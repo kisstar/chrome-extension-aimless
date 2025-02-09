@@ -6,11 +6,13 @@
     align-items: center;
     justify-content: space-between;
     background: #ffffff;
+    border-width: 0;
     box-shadow:
       0 1px 2px 0 rgba(0, 0, 0, 0.03),
       0 1px 6px -1px rgba(0, 0, 0, 0.02),
       0 2px 4px 0 rgba(0, 0, 0, 0.02);
     backdrop-filter: blur(8px);
+    cursor: pointer;
   }
 
   &__brand {
@@ -19,17 +21,34 @@
   }
 
   &__title {
+    display: flex;
+    flex-direction: column;
     margin-left: 12px;
+    line-height: initial;
+
+    &--main {
+      font-size: 24px;
+    }
+
+    &--sub {
+      margin-top: 4px;
+      font-size: 12px;
+      font-style: italic;
+      color: #666;
+    }
   }
 
+  // 内容区域（含侧边栏）
   &__body {
     margin-top: 40px;
   }
 
+  // 一级侧边栏
   &__aside-nav-1 {
     height: 100%;
   }
 
+  // 二级侧边栏
   &__aside-nav-2 {
     padding: 0 12px;
     height: 100%;

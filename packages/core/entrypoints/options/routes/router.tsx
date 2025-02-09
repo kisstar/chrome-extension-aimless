@@ -18,13 +18,18 @@ import JsonTool from '@/entrypoints/options/views/tools/json/Json';
 const router = createHashRouter([
   {
     path: '/',
-    element: <Navigate to={MenuPath.NETWORK_CONFIG} />
+    element: (
+      // 重定向到网络配置查看页面
+      <Navigate to={`${MenuPath.NETWORK_CONFIG}/${MenuPath.REQUEST_VIEW}`} />
+    )
   },
   {
+    // 首页
     path: MenuPath.HOME,
     element: <Home />
   },
   {
+    // 网络配置
     path: MenuPath.NETWORK_CONFIG,
     element: (
       <MainLayout
@@ -45,6 +50,7 @@ const router = createHashRouter([
     ]
   },
   {
+    // 工具列表
     path: MenuPath.NORMAL_TOOL,
     element: (
       <MainLayout
