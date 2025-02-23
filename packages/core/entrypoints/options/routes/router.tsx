@@ -14,6 +14,7 @@ import RequestAddConfig from '@/entrypoints/options/views/request/AddConfig';
 import ViewConfig from '@/entrypoints/options/views/request/ViewConfig';
 // tools
 import JsonTool from '@/entrypoints/options/views/tools/json/Json';
+import URLTool from '@/entrypoints/options/views/tools/url/URL';
 
 const router = createHashRouter([
   {
@@ -63,6 +64,10 @@ const router = createHashRouter([
       {
         path: MenuPath.TOOL_JSON,
         element: <JsonTool />
+      },
+      {
+        path: MenuPath.TOOL_URL,
+        element: <URLTool />
       }
     ]
   }

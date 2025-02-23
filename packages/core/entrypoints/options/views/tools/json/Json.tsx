@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import JsonEditor from '@/basic-components/json-editor';
 import '@/entrypoints/options/views/tools/json/index.scss';
 
-const App: React.FC = () => {
+const JsonPage: React.FC = () => {
   const [json, setJson] = useState('');
 
   const onChange = (value?: string) => {
@@ -12,4 +12,4 @@ const App: React.FC = () => {
   return <JsonEditor defaultMode="edit" code={json} onChange={onChange} />;
 };
 
-export default App;
+export default JsonPage;

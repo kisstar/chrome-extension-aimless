@@ -55,9 +55,9 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
         }
       }}
     >
-      <div className="csa-json-editor">
+      <div className="cea-json-editor">
         {mode === 'raw' ? (
-          <pre className="csa-json-editor__code">{codeStr}</pre>
+          <pre className="cea-json-editor__code">{codeStr}</pre>
         ) : mode === 'view' ? (
           <ReactJson
             src={codeObj}
@@ -73,7 +73,7 @@ const JsonEditor: React.FC<JsonEditorProps> = ({
           />
         )}
 
-        <div className="csa-json-editor__tool">
+        <div className="cea-json-editor__tool">
           <Radio.Group value={mode} onChange={(e) => setMode(e.target.value)}>
             <Radio.Button value="raw">Raw</Radio.Button>
             <Radio.Button value="view">查看</Radio.Button>

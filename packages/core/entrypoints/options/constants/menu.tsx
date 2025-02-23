@@ -4,7 +4,8 @@ import {
   FileAddOutlined,
   FundViewOutlined,
   RadarChartOutlined,
-  JavaScriptOutlined
+  JavaScriptOutlined,
+  IeOutlined
 } from '@ant-design/icons';
 import type { MenuItem } from '@/types';
 
@@ -16,7 +17,8 @@ export const enum MenuPath {
   REQUEST_ADD = 'request-add',
   // 工具
   NORMAL_TOOL = 'normal-tool',
-  TOOL_JSON = 'json'
+  TOOL_JSON = 'json',
+  TOOL_URL = 'url'
 }
 
 // 头部导航菜单
@@ -63,6 +65,11 @@ export const toolSubAsideNav: MenuItem[] = [
   {
     icon: <JavaScriptOutlined />,
     key: MenuPath.TOOL_JSON,
-    label: 'JSON 处理工具'
+    label: 'JSON 处理'
+  },
+  {
+    icon: <IeOutlined />,
+    key: MenuPath.TOOL_URL,
+    label: 'URL 解析'
   }
 ];
