@@ -20,6 +20,8 @@ export default defineConfig({
       }
     ],
     permissions: [
+      // 右键菜单
+      'contextMenus',
       // 本地存储
       'storage',
       'unlimitedStorage',

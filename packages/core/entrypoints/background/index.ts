@@ -3,10 +3,12 @@ import { onMessage } from 'webext-bridge/background';
 import { storage as wxtStorage } from 'wxt/storage';
 import { REQUEST_CONFIG_PERSIST_KEY } from '@/constants';
 import { CEA_REQUEST_GET_CONFIG } from '@/constants';
+import { registerContextMenu } from '@/entrypoints/background/context-menu';
 
 export default defineBackground(() => {
   onMessage('', runAction);
   onMessage(CEA_REQUEST_GET_CONFIG, handleGetRequestConfig);
+  registerContextMenu();
 
   async function runAction() {}
 
