@@ -164,4 +164,38 @@ export const addXHResponseInterceptor = (interceptor: ResponseInterceptor) => {
   responseInterceptors.push(interceptor);
 };
 
+export const removeXHRequestInterceptor = (
+  interceptor?: RequestInterceptor
+) => {
+  if (!interceptor) {
+    // 没有指定拦截器，直接清空
+    requestInterceptors.length = 0;
+    return;
+  }
+
+  const index = requestInterceptors.indexOf(interceptor);
+
+  if (index !== -1) {
+    requestInterceptors.splice(index, 1);
+  }
+};
+
+export const removeXHResponseInterceptor = (
+  interceptor?: ResponseInterceptor
+) => {
+  if (!interceptor) {
+    // 没有指定拦截器，直接清空
+    responseInterceptors.length = 0;
+    return;
+  }
+
+  const index = responseInterceptors.indexOf(interceptor);
+
+  if (index !== -1) {
+    responseInterceptors.splice(index, 1);
+  }
+};
+
+export { NativeXMLHttpRequest };
+
 export default CustomXMLHttpRequest;

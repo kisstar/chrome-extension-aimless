@@ -50,4 +50,22 @@ export const addFetchResponseInterceptor = (
   responseInterceptors.push(interceptor);
 };
 
+export const removeFetchResponseInterceptor = (
+  interceptor?: ResponseInterceptor
+) => {
+  if (!interceptor) {
+    // 没有指定拦截器，直接清空
+    responseInterceptors.length = 0;
+    return;
+  }
+
+  const index = responseInterceptors.indexOf(interceptor);
+
+  if (index !== -1) {
+    responseInterceptors.splice(index, 1);
+  }
+};
+
+export { nativeFetch };
+
 export default customFetch;

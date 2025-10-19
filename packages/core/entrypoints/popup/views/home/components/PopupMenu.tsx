@@ -1,13 +1,23 @@
 import React from 'react';
 import { Menu, ConfigProvider } from 'antd';
-import type { MenuProps } from 'antd';
 import { menuItems } from '@/entrypoints/popup/constants';
+import { MENU_ITEM_KEY } from '@/entrypoints/popup/constants';
+import { openOptionsPage } from '@/shared';
+import type { MenuProps } from 'antd';
 
-interface PopupMenuProps {
-  onClick?: MenuProps['onClick'];
-}
+const PopupMenu: React.FC = () => {
+  const onClick: MenuProps['onClick'] = (info) => {
+    switch (info.key) {
+      case MENU_ITEM_KEY.NETWORK_CONFIG:
+        openOptionsPage({
+          url: chrome.runtime.getURL(
+            'options.html#/network-config/request-view'
+          )
+        });
+        break;
+    }
+  };
 
-const PopupMenu: React.FC<PopupMenuProps> = ({ onClick }) => {
   return (
     <ConfigProvider
       theme={{

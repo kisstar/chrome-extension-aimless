@@ -1,4 +1,5 @@
 import type { MenuItem } from '@/types';
+import PopupMenuItem from '@/entrypoints/popup/views/home/components/PopupMenuItem';
 
 export const MENU_ITEM_KEY = {
   CONFIG_MANAGE: '779413cd-ccd2-4ffb-b86f-cdd665c4a5cb',
@@ -12,7 +13,9 @@ export const menuItems: MenuItem[] = [
     type: 'group',
     children: [
       {
-        label: '网络配置',
+        label: (
+          <PopupMenuItem id={MENU_ITEM_KEY.NETWORK_CONFIG} label="网络配置" />
+        ),
         key: MENU_ITEM_KEY.NETWORK_CONFIG
       }
     ]

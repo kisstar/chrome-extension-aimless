@@ -1,14 +1,18 @@
 import {
-  CustomXMLHttpRequest,
+  nativeFetch,
   customFetch,
+  NativeXMLHttpRequest,
+  CustomXMLHttpRequest,
   addFetchResponseInterceptor,
-  addXHResponseInterceptor
+  addXHResponseInterceptor,
+  removeFetchResponseInterceptor,
+  removeXHResponseInterceptor
 } from '@chrome-extension-aimless/shared';
+import { useRequestStore } from '@/entrypoints/content/stores';
 import type {
   FetchResponseContext,
   XMLHttpResponseContext
 } from '@chrome-extension-aimless/shared';
-import { useRequestStore } from '@/entrypoints/content/stores';
 
 async function overrideResponseInterceptor(ctx: FetchResponseContext) {
   const { isReady, getRequestConfig } = useRequestStore();
@@ -79,9 +83,23 @@ async function overrideXMLHttpResponseInterceptor(ctx: XMLHttpResponseContext) {
   return ctx;
 }
 
+/**
+ * 注册请求拦截器
+ * @returns 取消拦截器的函数
+ */
 export function registerInterceptors() {
   window.fetch = customFetch;
   window.XMLHttpRequest = CustomXMLHttpRequest;
   addXHResponseInterceptor(overrideXMLHttpResponseInterceptor);
   addFetchResponseInterceptor(overrideResponseInterceptor);
+}
+
+/**
+ * 取消请求拦截器
+ */
+export function unregisterInterceptors() {
+  window.fetch = nativeFetch;
+  window.XMLHttpRequest = NativeXMLHttpRequest;
+  removeXHResponseInterceptor(overrideXMLHttpResponseInterceptor);
+  removeFetchResponseInterceptor(overrideResponseInterceptor);
 }

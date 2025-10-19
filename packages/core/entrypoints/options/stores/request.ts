@@ -7,16 +7,18 @@ import type { MenuItem } from '@/types';
 import type { RequestConfigItem } from '@/types/request';
 
 interface RequestStoreState {
+  enable: boolean;
   list: RequestConfigItem[];
   selectedKeys: string[];
 }
 
 interface RequestStoreActions {
-  addConfig: (config: RequestConfigItem) => void;
+  toggleEnable: (enable?: boolean) => void;
   getMenuItems: () => MenuItem[];
-  setSelectedKeys: (keys: string[]) => void;
   getCurrentMenuItem(): RequestConfigItem | undefined;
+  addConfig: (config: RequestConfigItem) => void;
   deleteConfig: (key?: Key) => void;
+  setSelectedKeys: (keys: string[]) => void;
 }
 
 export type RequestPersistedState = Pick<RequestStoreState, 'list'>;
@@ -27,8 +29,18 @@ export const useRequestStore = create<
 >(
   persist(
     (set, get) => ({
+      enable: false,
       list: [],
       selectedKeys: [], // 当前选中的菜单项
+
+      /**
+       * 切换请求配置的启用状态
+       */
+      toggleEnable: (enable?: boolean) => {
+        set((state) => ({
+          enable: enable ?? !state.enable
+        }));
+      },
 
       /**
        * 根据配置生成用于展示的菜单项
@@ -80,7 +92,7 @@ export const useRequestStore = create<
     {
       // store 在存储时会自动加上 local: 前缀，此处去掉这部分
       name: REQUEST_CONFIG_PERSIST_KEY.slice('local:'.length),
-      partialize: (state) => ({ list: state.list }),
+      partialize: (state) => ({ list: state.list, enable: state.enable }),
       storage: createJSONStorage(createLocalStorage)
     }
   )
