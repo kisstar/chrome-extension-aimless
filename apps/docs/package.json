@@ -1,0 +1,17 @@
+{
+  "name": "@chrome-extension-aimless/docs",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "preview": "vitepress preview src"
+  },
+  "dependencies": {
+    "ant-design-vue": "catalog:"
+  },
+  "devDependencies": {
+    "sass-embedded": "catalog:",
+    "vitepress": "catalog:"
+  }
+}

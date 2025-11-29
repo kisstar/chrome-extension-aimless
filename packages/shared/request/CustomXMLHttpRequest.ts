@@ -2,49 +2,49 @@
  * see https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
  */
 
-import { runInterceptors } from './interceptor';
+import { runInterceptors } from './interceptor'
 
-const NativeXMLHttpRequest = window.XMLHttpRequest;
+const NativeXMLHttpRequest = window.XMLHttpRequest
 
 interface XMLHttpRequestContext {
-  xhr: CustomXMLHttpRequest;
-  readonly requestURL: string | URL;
-  readonly requestMethod: string;
+  xhr: CustomXMLHttpRequest
+  readonly requestURL: string | URL
+  readonly requestMethod: string
 }
 
 export interface XMLHttpResponseContext {
-  xhr: CustomXMLHttpRequest;
-  readonly requestURL: string | URL;
-  readonly requestMethod: string;
-  responseType: XMLHttpRequestResponseType;
-  responseText: string | null;
-  status: number;
+  xhr: CustomXMLHttpRequest
+  readonly requestURL: string | URL
+  readonly requestMethod: string
+  responseType: XMLHttpRequestResponseType
+  responseText: string | null
+  status: number
 }
 
 type RequestInterceptor = (
-  ctx: XMLHttpRequestContext
-) => Promise<XMLHttpRequestContext | false>;
+  ctx: XMLHttpRequestContext,
+) => Promise<XMLHttpRequestContext | false>
 type ResponseInterceptor = (
-  ctx: XMLHttpResponseContext
-) => Promise<XMLHttpResponseContext>;
+  ctx: XMLHttpResponseContext,
+) => Promise<XMLHttpResponseContext>
 
-const requestInterceptors: RequestInterceptor[] = [];
-const responseInterceptors: ResponseInterceptor[] = [];
+const requestInterceptors: RequestInterceptor[] = []
+const responseInterceptors: ResponseInterceptor[] = []
 
 /**
  * A custom XMLHttpRequest class that supports request and response interceptors.
  */
 class CustomXMLHttpRequest extends NativeXMLHttpRequest {
-  private requestInterceptors: RequestInterceptor[] = [];
-  private responseInterceptors: ResponseInterceptor[] = [];
-  private requestURL: string | URL = '';
-  private requestMethod: string = '';
-  private requestContext: XMLHttpRequestContext | null = null;
-  private responseContext: XMLHttpResponseContext | null = null;
+  private requestInterceptors: RequestInterceptor[] = []
+  private responseInterceptors: ResponseInterceptor[] = []
+  private requestURL: string | URL = ''
+  private requestMethod: string = ''
+  private requestContext: XMLHttpRequestContext | null = null
+  private responseContext: XMLHttpResponseContext | null = null
 
   constructor() {
-    super();
-    this.overrideOnreadystatechange();
+    super()
+    this.overrideOnreadystatechange()
   }
 
   /**
@@ -54,32 +54,32 @@ class CustomXMLHttpRequest extends NativeXMLHttpRequest {
    * 然后调用原始的 onreadystatechange 方法。
    */
   private overrideOnreadystatechange() {
-    const originalOnReadyStateChange = this.onreadystatechange;
+    const originalOnReadyStateChange = this.onreadystatechange
 
     this.onreadystatechange = (ev) => {
-      this.responseContext = this.createResponseContext();
+      this.responseContext = this.createResponseContext()
 
       if (this.readyState === NativeXMLHttpRequest.DONE) {
         // 遍历执行响应拦截器
         runInterceptors<XMLHttpResponseContext>(
           responseInterceptors.concat(this.responseInterceptors),
-          this.responseContext!
-        );
+          this.responseContext!,
+        )
       }
 
       // 调用原始的 onreadystatechange
       if (originalOnReadyStateChange) {
-        originalOnReadyStateChange.call(this, ev);
+        originalOnReadyStateChange.call(this, ev)
       }
-    };
+    }
   }
 
   private createRequestContext(): XMLHttpRequestContext {
     return {
       xhr: this,
       requestURL: this.requestURL,
-      requestMethod: this.requestMethod
-    };
+      requestMethod: this.requestMethod,
+    }
   }
 
   private createResponseContext(): XMLHttpResponseContext {
@@ -89,50 +89,50 @@ class CustomXMLHttpRequest extends NativeXMLHttpRequest {
       requestMethod: this.requestMethod,
       status: 200,
       responseType: super.responseType,
-      responseText: super.responseText
-    };
+      responseText: super.responseText,
+    }
   }
 
   // 添加请求拦截器
   addRequestInterceptor(interceptor: RequestInterceptor) {
-    this.requestInterceptors.push(interceptor);
+    this.requestInterceptors.push(interceptor)
   }
 
   // 添加响应拦截器
   addResponseInterceptor(interceptor: ResponseInterceptor) {
-    this.responseInterceptors.push(interceptor);
+    this.responseInterceptors.push(interceptor)
   }
 
   // 指定响应中包含的数据类型
   get responseType() {
-    return this.responseContext?.responseType || super.responseType;
+    return this.responseContext?.responseType || super.responseType
   }
 
   get responseText() {
-    return this.responseContext?.responseText || super.responseText;
+    return this.responseContext?.responseText || super.responseText
   }
 
   // 返回的类型取决于请求的 responseType 属性
   get response() {
-    return this.responseText;
+    return this.responseText
   }
 
   get status() {
-    return this.responseContext?.status || super.status;
+    return this.responseContext?.status || super.status
   }
 
   getResponseHeader(header: string): string | null {
-    return super.getResponseHeader(header);
+    return super.getResponseHeader(header)
   }
 
   getAllResponseHeaders(): string {
-    return super.getAllResponseHeaders();
+    return super.getAllResponseHeaders()
   }
 
   open(method: string, url: string | URL): void {
-    this.requestURL = url;
-    this.requestMethod = method;
-    super.open(method, url);
+    this.requestURL = url
+    this.requestMethod = method
+    super.open(method, url)
   }
 
   /**
@@ -142,26 +142,26 @@ class CustomXMLHttpRequest extends NativeXMLHttpRequest {
    * @returns 返回一个Promise，不解析任何值
    */
   async send(body?: Document | XMLHttpRequestBodyInit | null): Promise<void> {
-    this.requestContext = this.createRequestContext();
+    this.requestContext = this.createRequestContext()
 
     // 遍历执行请求拦截器
     const result = await runInterceptors<XMLHttpRequestContext>(
       requestInterceptors.concat(this.requestInterceptors),
-      this.requestContext!
-    );
+      this.requestContext!,
+    )
 
     if (result !== false) {
-      super.send(body);
+      super.send(body)
     }
   }
 }
 
-export const addXHRequestInterceptor = (interceptor: RequestInterceptor) => {
-  requestInterceptors.push(interceptor);
-};
+export function addXHRequestInterceptor(interceptor: RequestInterceptor) {
+  requestInterceptors.push(interceptor)
+}
 
-export const addXHResponseInterceptor = (interceptor: ResponseInterceptor) => {
-  responseInterceptors.push(interceptor);
-};
+export function addXHResponseInterceptor(interceptor: ResponseInterceptor) {
+  responseInterceptors.push(interceptor)
+}
 
-export default CustomXMLHttpRequest;
+export default CustomXMLHttpRequest

@@ -1,0 +1,4 @@
+# https://docs.github.com/cn/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+
+# Automatically change the line endings of all text files to LF.
+* text=auto eol=lf

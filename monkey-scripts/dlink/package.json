@@ -1,0 +1,10 @@
+{
+  "name": "@monkey-scripts/dlink",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "dependencies": {
+    "@monkey-scripts/lib": "workspace:^"
+  }
+}

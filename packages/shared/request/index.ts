@@ -1,12 +1,14 @@
+export { request } from './core'
+
 export {
-  default as CustomXMLHttpRequest,
-  addXHResponseInterceptor,
-  addXHRequestInterceptor,
-  type XMLHttpResponseContext
-} from './CustomXMLHttpRequest';
-export {
-  default as customFetch,
   addFetchResponseInterceptor,
-  type FetchResponseContext
-} from './custom-fetch';
-export { request } from './core';
+  default as customFetch,
+  type FetchResponseContext,
+} from './custom-fetch'
+
+export {
+  addXHRequestInterceptor,
+  addXHResponseInterceptor,
+  default as CustomXMLHttpRequest,
+  type XMLHttpResponseContext,
+} from './CustomXMLHttpRequest'

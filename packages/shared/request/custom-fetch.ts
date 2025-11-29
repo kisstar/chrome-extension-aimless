@@ -2,20 +2,20 @@
  * see https://developer.mozilla.org/zh-CN/docs/Web/API/Window/fetch
  */
 
-import { runInterceptors } from './interceptor';
+import { runInterceptors } from './interceptor'
 
 export interface FetchResponseContext {
-  response: Response;
-  readonly requestURL: RequestInfo | URL;
-  readonly requestMethod: string;
+  response: Response
+  readonly requestURL: RequestInfo | URL
+  readonly requestMethod: string
 }
 
 type ResponseInterceptor = (
-  ctx: FetchResponseContext
-) => Promise<FetchResponseContext>;
+  ctx: FetchResponseContext,
+) => Promise<FetchResponseContext>
 
-const nativeFetch = window.fetch;
-const responseInterceptors: ResponseInterceptor[] = [];
+const nativeFetch = window.fetch
+const responseInterceptors: ResponseInterceptor[] = []
 
 /**
  * 自定义的 fetch 函数，用于发送网络请求并处理响应。
@@ -26,28 +26,26 @@ const responseInterceptors: ResponseInterceptor[] = [];
  */
 async function customFetch(input: RequestInfo | URL, init?: RequestInit) {
   // 发送请求并获取响应
-  const response = await nativeFetch(input, init);
+  const response = await nativeFetch(input, init)
   // 执行响应拦截器
   const ctx = await runInterceptors<FetchResponseContext>(
     responseInterceptors,
     {
       requestURL: input,
       requestMethod: init?.method || 'GET',
-      response: response.clone()
-    }
-  );
+      response: response.clone(),
+    },
+  )
 
   if (ctx === false) {
-    return response;
+    return response
   }
 
-  return ctx.response;
+  return ctx.response
 }
 
-export const addFetchResponseInterceptor = (
-  interceptor: ResponseInterceptor
-) => {
-  responseInterceptors.push(interceptor);
-};
+export function addFetchResponseInterceptor(interceptor: ResponseInterceptor) {
+  responseInterceptors.push(interceptor)
+}
 
-export default customFetch;
+export default customFetch

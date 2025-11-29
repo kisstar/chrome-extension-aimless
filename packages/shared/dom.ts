@@ -2,13 +2,13 @@
  * DOM related
  */
 
-import { isString } from './type-is';
+import { isString } from './type-is'
 
-export const $: typeof document.querySelector =
-  document.querySelector.bind(document);
+export const $: typeof document.querySelector
+  = document.querySelector.bind(document)
 
-export const $$: typeof document.querySelectorAll =
-  document.querySelectorAll.bind(document);
+export const $$: typeof document.querySelectorAll
+  = document.querySelectorAll.bind(document)
 
 /**
  * 向元素中追加内容
@@ -18,16 +18,16 @@ export const $$: typeof document.querySelectorAll =
  */
 export function appendContent<T extends Node>(
   el: HTMLElement,
-  content: T | string
+  content: T | string,
 ) {
-  const target = el;
+  const target = el
 
   if (isString(content)) {
-    target.textContent = content;
-    return;
+    target.textContent = content
+    return
   }
 
-  target.appendChild(content);
+  target.appendChild(content)
 }
 
 /**
@@ -41,48 +41,47 @@ export function createEl<T extends keyof HTMLElementTagNameMap>(
   tagName: T,
   properties?: Record<string, string>,
   attributes?: Record<string, string>,
-  content?: HTMLElement | string
+  content?: HTMLElement | string,
 ): HTMLElementTagNameMap[T] {
-  const el = document.createElement<T>(tagName);
+  const el = document.createElement<T>(tagName)
 
   if (properties) {
     Object.getOwnPropertyNames(properties).forEach(
-      function setProperty(propName) {
+      (propName) => {
         const val = properties[propName];
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (el as any)[propName] = val;
-      }
-    );
+        (el as any)[propName] = val
+      },
+    )
   }
   if (attributes) {
     Object.getOwnPropertyNames(attributes).forEach(
-      function setAttribute(attrName) {
-        el.setAttribute(attrName, attributes[attrName]);
-      }
-    );
+      (attrName) => {
+        el.setAttribute(attrName, attributes[attrName])
+      },
+    )
   }
   if (content) {
-    appendContent(el, content);
+    appendContent(el, content)
   }
 
-  return el;
+  return el
 }
 
 /**
  * 将指定的样式文本通过 style 添加到文档中
  * @param styleContent 样式内容
- * @returns {HTMLStyleElement}
+ * @returns {HTMLStyleElement} DOM Style element
  */
 export function appendStyle(
   styleContent: string,
-  options: Record<string, string> = {}
+  options: Record<string, string> = {},
 ) {
-  const styleEl = createEl('style', options);
+  const styleEl = createEl('style', options)
 
-  styleEl.type = 'text/css';
-  styleEl.innerHTML = styleContent;
-  $('head')?.appendChild(styleEl);
+  styleEl.type = 'text/css'
+  styleEl.innerHTML = styleContent
+  $('head')?.appendChild(styleEl)
 
-  return styleEl;
+  return styleEl
 }

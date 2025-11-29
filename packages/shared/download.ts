@@ -1,10 +1,10 @@
-import { createEl } from './dom';
-import { request } from './request';
+import { createEl } from './dom'
+import { request } from './request'
 
 interface DownloadOptions {
-  downloadType?: 'tag' | 'fetch';
-  filename?: string;
-  fileProp?: FilePropertyBag;
+  downloadType?: 'tag' | 'fetch'
+  filename?: string
+  fileProp?: FilePropertyBag
 }
 
 /**
@@ -15,13 +15,13 @@ interface DownloadOptions {
 export function downloadByTag(url: string, filename?: string) {
   const aEl = createEl('a', {
     href: url,
-    download: filename || url
-  });
+    download: filename || url,
+  })
 
-  aEl.style.display = 'none';
-  document.body.appendChild(aEl);
-  aEl.click();
-  document.body.removeChild(aEl);
+  aEl.style.display = 'none'
+  document.body.appendChild(aEl)
+  aEl.click()
+  document.body.removeChild(aEl)
 }
 
 /**
@@ -33,29 +33,29 @@ export function downloadByTag(url: string, filename?: string) {
 export function downloadByFetch(
   url: string,
   filename: string,
-  fileProp: FilePropertyBag
+  fileProp: FilePropertyBag,
 ) {
   request(url)
-    .then((res) => res.blob())
-    .then((blobData) => new File([blobData], filename, fileProp))
+    .then(res => res.blob())
+    .then(blobData => new File([blobData], filename, fileProp))
     .then((fileData) => {
-      const objUrl = URL.createObjectURL(fileData);
+      const objUrl = URL.createObjectURL(fileData)
 
-      downloadByTag(objUrl, filename);
-      URL.revokeObjectURL(objUrl);
-    });
+      downloadByTag(objUrl, filename)
+      URL.revokeObjectURL(objUrl)
+    })
 }
 
 export function download(url: string, options?: DownloadOptions) {
   const {
     filename = 'download',
     downloadType = 'fetch',
-    fileProp = {}
-  } = options || {};
+    fileProp = {},
+  } = options || {}
 
   if (downloadType === 'tag') {
-    return downloadByTag(url, filename);
+    return downloadByTag(url, filename)
   }
 
-  return downloadByFetch(url, filename, fileProp);
+  return downloadByFetch(url, filename, fileProp)
 }
