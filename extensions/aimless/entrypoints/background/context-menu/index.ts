@@ -37,12 +37,12 @@ function onContextMenuClicked(info: chrome.contextMenus.OnClickData) {
   switch (info.menuItemId) {
     case 'toolbox_json':
       chrome.tabs.create({
-        url: chrome.runtime.getURL('options.html#/normal-tool/json'),
+        url: chrome.runtime.getURL('toolbox/index.html#/json'),
       })
       break
     case 'toolbox_url':
       chrome.tabs.create({
-        url: chrome.runtime.getURL('options.html#/normal-tool/url'),
+        url: chrome.runtime.getURL('toolbox/index.html#/url'),
       })
       break
   }

@@ -1,0 +1,37 @@
+{
+  "name": "@chrome-extension-aimless/ui",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ant-design/icons": "catalog:",
+    "@monaco-editor/react": "catalog:",
+    "antd": "catalog:",
+    "monaco-editor": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-json-view": "catalog:"
+  },
+  "devDependencies": {
+    "@chrome-extension-aimless/shared": "workspace:^",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "globals": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:rolldown-vite@7.2.5"
+    }
+  }
+}

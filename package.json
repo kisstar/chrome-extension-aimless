@@ -8,9 +8,11 @@
   "scripts": {
     "dev:core": "pnpm --filter chrome-extension-aimless dev",
     "dev:test": "pnpm --filter chrome-extension-aimless dev:test",
+    "dev:tb": "pnpm --filter toolbox dev",
     "dev:ms": "node build/vite.build.mjs --watch",
     "dev:doc": "pnpm --filter @chrome-extension-aimless/docs dev",
     "build:core": "pnpm --filter chrome-extension-aimless build",
+    "build:tb": "pnpm --filter toolbox build",
     "build:ms": "node build/vite.build.mjs",
     "build:doc": "pnpm --filter @chrome-extension-aimless/docs build",
     "lint": "eslint",

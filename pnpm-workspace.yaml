@@ -5,21 +5,25 @@ packages:
   - monkey-scripts/*
 
 catalog:
-  '@ant-design/icons': ^6.1.0
+  '@ant-design/icons': 6.1.0
   '@antfu/eslint-config': ^6.2.0
   '@lib-stack/logger': ^0.2.2
-  '@monaco-editor/react': ^4.7.0
+  '@monaco-editor/react': 4.7.0
   '@types/chrome': ^0.1.31
+  '@types/node': ^24.10.1
   '@types/react': ^19.1.12
   '@types/react-dom': ^19.1.9
+  '@vitejs/plugin-react': ^5.1.1
   '@wxt-dev/module-react': ^1.1.3
   ant-design-vue: 4.x
   antd: 6.0.0
   eslint: ^9.39.1
-  monaco-editor: ^0.55.1
+  globals: ^16.5.0
+  monaco-editor: 0.55.1
   react: ^19.1.1
   react-dom: ^19.1.1
-  react-json-view: ^1.21.3
+  react-json-view: 1.21.3
+  react-router-dom: ^7.9.6
   sass-embedded: ^1.93.3
   typescript: ^5.9.2
   vite: ^7.2.4
