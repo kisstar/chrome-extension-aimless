@@ -1,5 +1,5 @@
-import { registerInterceptors } from '@/entrypoints/content/modules/request';
+// import { registerInterceptors } from '@/entrypoints/content/modules/request';
 
 export default defineUnlistedScript(() => {
-  registerInterceptors();
+  // registerInterceptors();
 });

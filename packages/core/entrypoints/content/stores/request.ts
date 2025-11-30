@@ -1,4 +1,6 @@
+import { isUndefined } from '@chrome-extension-aimless/shared';
 import { getRequestConfig as getRemoteRequestConfig } from '@/entrypoints/content/message';
+import { unregisterInterceptors } from '@/entrypoints/content/modules/request';
 import type { RequestConfigItem } from '@/types';
 
 // 请求配置是否已经加载完成
@@ -18,8 +20,16 @@ async function syncRequestConfig() {
   }
 }
 
-const setRequestConfig = (config: RequestConfigItem[]) => {
-  userConfig = config;
+const setRequestConfig = (config: {
+  list?: RequestConfigItem[];
+  enable?: boolean;
+}) => {
+  if (config.list) {
+    userConfig = config.list;
+  }
+  if (!isUndefined(config.enable)) {
+    unregisterInterceptors();
+  }
 };
 
 const getRequestConfig = () => {

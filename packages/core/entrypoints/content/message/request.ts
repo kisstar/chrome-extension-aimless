@@ -13,13 +13,12 @@ import type { RequestPersistedState } from '@/entrypoints/options/stores';
 setNamespace(MESSAGE_NAMESPACE);
 
 export function registerEvents() {
-  onMessage<{ list: RequestConfigItem[] }>(
+  onMessage<{ list?: RequestConfigItem[]; enable?: boolean }>(
     CEA_REQUEST_SYNC_CONFIG,
     (message) => {
       const { data } = message;
-      const { list } = data;
 
-      useRequestStore().setRequestConfig(list);
+      useRequestStore().setRequestConfig(data);
     }
   );
 }
@@ -31,13 +30,15 @@ export async function getRequestConfig() {
     'background'
   );
   let list: RequestConfigItem[] = [];
+  let enable = true;
 
   if (configStr) {
     const localRequestConfig: StorageValue<RequestPersistedState> =
       JSON.parse(configStr);
 
     list = localRequestConfig.state.list;
+    enable = localRequestConfig.state.enable;
   }
 
-  return list;
+  return { list, enable };
 }

@@ -21,7 +21,7 @@ interface RequestStoreActions {
   setSelectedKeys: (keys: string[]) => void;
 }
 
-export type RequestPersistedState = Pick<RequestStoreState, 'list'>;
+export type RequestPersistedState = Pick<RequestStoreState, 'list' | 'enable'>;
 
 export const useRequestStore = create<
   RequestStoreState & RequestStoreActions,

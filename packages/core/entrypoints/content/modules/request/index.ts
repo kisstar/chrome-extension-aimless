@@ -1,1 +1,4 @@
-export { registerInterceptors } from '@/entrypoints/content/modules/request/interceptor';
+export {
+  registerInterceptors,
+  unregisterInterceptors
+} from '@/entrypoints/content/modules/request/interceptor';
