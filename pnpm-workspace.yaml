@@ -7,7 +7,7 @@ packages:
 catalog:
   '@ant-design/icons': 6.1.0
   '@antfu/eslint-config': ^6.2.0
-  '@lib-stack/logger': ^0.2.2
+  '@lib-stack/logger': 0.2.2
   '@monaco-editor/react': 4.7.0
   '@types/chrome': ^0.1.31
   '@types/node': ^24.10.1

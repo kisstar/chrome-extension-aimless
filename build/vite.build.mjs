@@ -13,7 +13,7 @@ const resolve = (...paths) => stlResolve(__dirname, '../', ...paths)
 const isWatchMode = process.argv.includes('--watch')
 
 // 模块打包配置
-const monkeyScripts = ['csdn', 'dlink', 'zhihu']
+const monkeyScripts = ['csdn', 'dlink', 'zhihu', 'netdisk']
 const libraries = monkeyScripts.map((name) => {
   return {
     entry: resolve(`monkey-scripts/${name}/index.ts`),
@@ -34,7 +34,7 @@ for (const lib of libraries) {
     configFile: false,
     plugins: [
       banner({
-        content: metaHeader,
+        content: `${metaHeader};`,
       }),
     ],
     build: {

@@ -1,0 +1,11 @@
+{
+  "name": "@monkey-scripts/netdisk",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "dependencies": {
+    "@lib-stack/logger": "catalog:",
+    "@monkey-scripts/lib": "workspace:^"
+  }
+}
