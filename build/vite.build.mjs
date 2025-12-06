@@ -47,7 +47,7 @@ for (const lib of libraries) {
       lib: {
         ...lib,
       },
-      outDir: resolve(`.output/scripts`),
+      outDir: resolve(`.output/docs/scripts`),
     },
   })
 }

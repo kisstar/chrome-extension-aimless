@@ -6,18 +6,22 @@ export default defineConfig({
   description: '针对 Chrome 浏览器编写的一些插件和油猴脚本。',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [{ text: 'Monkey Scripts', link: '/monkey-scripts' }],
+    nav: [
+      { text: 'Extensions', link: '/chrome-extension' },
+      { text: 'Scripts', link: '/monkey-scripts' },
+    ],
 
-    sidebar: [
-      {
-        text: 'Monkey Scripts',
+    sidebar: {
+      '/monkey-scripts/': {
+        base: '/monkey-scripts/',
         items: [
-          { text: '知乎', link: '/monkey-scripts/zhihu.md' },
-          { text: 'CSDN', link: '/monkey-scripts/csdn.md' },
-          { text: 'D Link', link: '/monkey-scripts/dlink.md' },
+          { text: '知乎', link: '/zhihu.md' },
+          { text: 'CSDN', link: '/csdn.md' },
+          { text: 'D Link', link: '/dlink.md' },
+          { text: 'NetDisk', link: '/netdisk.md' },
         ],
       },
-    ],
+    },
 
     socialLinks: [
       {

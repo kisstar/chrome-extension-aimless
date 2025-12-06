@@ -22,6 +22,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "eslint": "catalog:",
+    "gh-pages": "catalog:",
     "vite": "catalog:"
   }
 }
