@@ -1,0 +1,1 @@
+import{_ as a,A as i,E as e,ap as t}from"./chunks/framework.C1ntWOUJ.js";const c=JSON.parse('{"title":"发布","description":"","frontmatter":{},"headers":[],"relativePath":"dev/deploy.md","filePath":"dev/deploy.md"}'),p={name:"dev/deploy.md"};function n(l,s,h,d,r,o){return e(),i("div",null,[...s[0]||(s[0]=[t("",8)])])}const g=a(p,[["render",n]]);export{c as __pageData,g as default};

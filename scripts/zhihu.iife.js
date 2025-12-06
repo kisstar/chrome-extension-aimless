@@ -10,13 +10,13 @@
 // @grant        none
 // @license      MIT License
 // ==/UserScript==
-
-(function(){"use strict";const l=document.querySelector.bind(document);document.querySelectorAll.bind(document);function i(n,e,t,o){const a=document.createElement(n);return e&&Object.getOwnPropertyNames(e).forEach(function(d){const m=e[d];a[d]=m}),a}function c(n,e={}){var o;const t=i("style",e);return t.type="text/css",t.innerHTML=n,(o=l("head"))==null||o.appendChild(t),t}const s={signModalSelector:".signFlowModal .Modal-closeButton",styleClassName:"ks-monkey-zhihu"},r=`
+;
+(function(){"use strict";const l=document.querySelector.bind(document);document.querySelectorAll.bind(document);function d(t,e,n,y){const a=document.createElement(t);return e&&Object.getOwnPropertyNames(e).forEach(c=>{const u=e[c];a[c]=u}),a}function o(t,e={}){const n=d("style",e);return n.type="text/css",n.innerHTML=t,l("head")?.appendChild(n),n}const s={signModalSelector:".signFlowModal .Modal-closeButton",styleClassName:"ks-monkey-zhihu"},i=`
   .Modal-wrapper {
     display: none;
   }
-`.trim();function u(){var t;const n=l(s.signModalSelector);n&&n.click();const e=l(s.styleClassName);e&&((t=l("head"))==null||t.removeChild(e))}c(r,{className:s.styleClassName}),window.addEventListener("load",u);const y=`
+`.trim();function r(){const t=l(s.signModalSelector);t&&t.click();const e=l(s.styleClassName);e&&l("head")?.removeChild(e)}o(i,{className:s.styleClassName}),window.addEventListener("load",r);const m=`
   img[alt="广告"] {
     display: none;
   }
-`.trim();c(y,{className:s.styleClassName})})();
+`.trim();o(m,{className:s.styleClassName})})();
