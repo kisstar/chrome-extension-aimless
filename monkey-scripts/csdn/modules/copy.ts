@@ -1,7 +1,7 @@
 /**
  * @description 支持未登录复制
  */
-import { $, appendStyle } from '@chrome-extension-aimless/shared'
+import { $, appendStyle } from '@aimless/shared'
 import config from '../config'
 
 const styleContent = `

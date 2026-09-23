@@ -1,28 +1,36 @@
 {
-  "name": "chrome-extension-aimless",
+  "name": "@aimless/workspace",
   "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "A highly scalable and multifunctional browser extension.",
   "license": "MIT",
   "scripts": {
-    "dev:core": "pnpm --filter chrome-extension-aimless dev",
-    "dev:test": "pnpm --filter chrome-extension-aimless dev:test",
-    "dev:tb": "pnpm --filter toolbox dev",
+    "dev:core": "pnpm --filter @aimless/extension dev",
+    "dev:test": "pnpm --filter @aimless/extension dev:test",
+    "dev:tb": "pnpm --filter @aimless/toolbox dev",
     "dev:ms": "node build/vite.build.mjs --watch",
-    "dev:doc": "pnpm --filter @chrome-extension-aimless/docs dev",
-    "build:core": "pnpm --filter chrome-extension-aimless build",
-    "build:tb": "pnpm --filter toolbox build",
+    "dev:doc": "pnpm --filter @aimless/docs dev",
+    "build:core": "pnpm --filter ./extensions/aimless build",
+    "build:tb": "pnpm --filter @aimless/toolbox build",
     "build:ms": "node build/vite.build.mjs",
-    "build:doc": "pnpm --filter @chrome-extension-aimless/docs build",
+    "build:doc": "pnpm --filter @aimless/docs build",
     "lint": "eslint",
-    "build": "npm run build:doc && npm run build:ms",
+    "typecheck": "pnpm exec tsc -p monkey-scripts/tsconfig.json && pnpm --filter ./packages/shared exec tsc -p tsconfig.json && pnpm --filter ./packages/ui exec tsc -b && pnpm --filter ./apps/toolbox exec tsc -b && pnpm --filter ./extensions/aimless compile",
+    "test": "vitest run",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "build:site": "pnpm build:doc && pnpm build:ms",
+    "build:extension": "pnpm build:core",
+    "verify:extension": "node build/verify-extension-artifacts.mjs",
+    "build": "pnpm build:site && pnpm build:extension && pnpm verify:extension",
     "deploy": "npm run build && gh-pages -d .output/docs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "eslint": "catalog:",
     "gh-pages": "catalog:",
-    "vite": "catalog:"
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
   }
 }

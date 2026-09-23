@@ -1,4 +1,4 @@
-import { $, appendStyle } from '@chrome-extension-aimless/shared'
+import { $, appendStyle } from '@aimless/shared'
 import config from '../config'
 
 // 通过追加样式隐藏默认展示的登录模态框

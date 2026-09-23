@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-aimless/docs",
+  "name": "@aimless/docs",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -11,7 +11,7 @@
     "ant-design-vue": "catalog:"
   },
   "devDependencies": {
-    "sass-embedded": "catalog:",
+    "sass": "catalog:",
     "vitepress": "catalog:"
   }
 }

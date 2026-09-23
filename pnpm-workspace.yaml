@@ -4,6 +4,11 @@ packages:
   - packages/*
   - monkey-scripts/*
 
+autoInstallPeers: false
+
+overrides:
+  vite: 7.2.4
+
 catalog:
   '@ant-design/icons': 6.1.0
   '@antfu/eslint-config': ^6.2.0
@@ -25,8 +30,9 @@ catalog:
   react-dom: ^19.1.1
   react-json-view: 1.21.3
   react-router-dom: ^7.9.6
-  sass-embedded: ^1.93.3
+  sass: 1.93.3
   typescript: ^5.9.2
-  vite: ^7.2.4
+  vite: 7.2.4
   vitepress: ^1.6.4
+  vitest: 3.2.4
   wxt: ^0.20.6

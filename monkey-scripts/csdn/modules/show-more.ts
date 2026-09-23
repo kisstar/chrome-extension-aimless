@@ -2,7 +2,7 @@
  * @description
  */
 
-import { $$ } from '@chrome-extension-aimless/shared'
+import { $$ } from '@aimless/shared'
 import config from '../config'
 
 function showMore() {

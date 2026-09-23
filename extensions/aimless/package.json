@@ -1,5 +1,5 @@
 {
-  "name": "chrome-extension-aimless",
+  "name": "@aimless/extension",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -8,23 +8,20 @@
     "dev": "wxt",
     "dev:test": "vite",
     "dev:firefox": "wxt -b firefox",
-    "build": "wxt build",
+    "build": "pnpm build:chrome && pnpm build:firefox",
+    "build:chrome": "wxt build -b chrome",
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "verify:artifacts": "node ../../build/verify-extension-artifacts.mjs",
     "postinstall": "wxt prepare"
   },
   "dependencies": {
-    "@ant-design/icons": "catalog:",
-    "@chrome-extension-aimless/shared": "workspace:^",
+    "@aimless/ui": "workspace:*",
     "@lib-stack/logger": "catalog:",
-    "@monaco-editor/react": "catalog:",
-    "antd": "catalog:",
-    "monaco-editor": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:",
-    "react-json-view": "catalog:"
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@types/chrome": "catalog:",

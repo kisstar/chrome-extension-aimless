@@ -10,24 +10,18 @@ function resolve(...paths: string[]) {
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  modules: ['@wxt-dev/module-react'],
+  modules: ['@wxt-dev/module-react', './modules/toolbox-assets.mjs'],
   outDir: resolve('.output'),
   manifest: {
     web_accessible_resources: [
       {
-        resources: ['*'],
-        matches: ['*://*/*', '<all_urls>'],
+        resources: ['json-content.js'],
+        matches: ['http://*/*', 'https://*/*'],
       },
     ],
     permissions: [
-      // 右键菜单
       'contextMenus',
-      // 本地存储
-      'storage',
-      'unlimitedStorage',
-      // 脚本注入
       'scripting',
-      'activeTab',
     ],
   },
 })

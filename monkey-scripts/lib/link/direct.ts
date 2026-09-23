@@ -1,4 +1,4 @@
-import { $ } from '@chrome-extension-aimless/shared'
+import { $ } from '@aimless/shared'
 import { ignoreMap } from './config'
 
 const bodyEl = $('body')

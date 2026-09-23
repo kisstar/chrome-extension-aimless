@@ -1,4 +1,4 @@
-import { appendStyle } from '@chrome-extension-aimless/shared'
+import { appendStyle } from '@aimless/shared'
 import config from '../../config'
 import styleContent from './index.css?raw'
 

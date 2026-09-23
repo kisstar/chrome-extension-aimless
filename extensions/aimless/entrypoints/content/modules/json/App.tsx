@@ -1,5 +1,5 @@
+import { JsonEditor } from '@aimless/ui'
 import React, { useState } from 'react'
-import JsonEditor from '@/basic-components/json-editor'
 
 const App: React.FC<{ code: string }> = ({ code }) => {
   const [json, setJson] = useState(code)

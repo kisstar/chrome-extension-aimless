@@ -1,4 +1,4 @@
-import { JsonEditor } from '@chrome-extension-aimless/ui'
+import { JsonEditor } from '@aimless/ui'
 import React, { useState } from 'react'
 import './index.scss'
 

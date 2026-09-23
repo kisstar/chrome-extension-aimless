@@ -1,5 +1,5 @@
 import type { OnChange, OnMount } from '@monaco-editor/react'
-import { isString } from '@chrome-extension-aimless/shared'
+import { isString } from '@aimless/shared'
 import Editor from '@monaco-editor/react'
 import { ConfigProvider, Radio } from 'antd'
 import React, { useMemo, useState } from 'react'

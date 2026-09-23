@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-aimless/ui",
+  "name": "@aimless/ui",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aimless/shared": "workspace:*",
     "@ant-design/icons": "catalog:",
     "@monaco-editor/react": "catalog:",
     "antd": "catalog:",
@@ -20,18 +21,12 @@
     "react-json-view": "catalog:"
   },
   "devDependencies": {
-    "@chrome-extension-aimless/shared": "workspace:^",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "globals": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:rolldown-vite@7.2.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:rolldown-vite@7.2.5"
-    }
+    "vite": "catalog:"
   }
 }

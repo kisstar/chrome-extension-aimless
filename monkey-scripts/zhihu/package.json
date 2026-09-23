@@ -5,6 +5,6 @@
   "main": "./index.ts",
   "module": "./index.ts",
   "dependencies": {
-    "@chrome-extension-aimless/shared": "workspace:^"
+    "@aimless/shared": "workspace:*"
   }
 }

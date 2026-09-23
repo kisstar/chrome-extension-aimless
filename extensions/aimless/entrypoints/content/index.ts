@@ -2,9 +2,8 @@
 import '@/entrypoints/content/modules/json/index.scss'
 
 export default defineContentScript({
-  matches: ['*://*/*', '<all_urls>'],
+  matches: ['http://*/*', 'https://*/*'],
   runAt: 'document_start',
-  allFrames: true,
   async main() {
     await injectScript('/json-content.js' as any)
   },
