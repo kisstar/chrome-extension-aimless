@@ -1,3 +1,3 @@
-# Chrome Extension Aimless
+# Aimless Toolkit
 
-针对 Chrome 浏览器编写的插件。
+面向开发者的浏览器工具集。

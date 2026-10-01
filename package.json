@@ -6,8 +6,8 @@
   "description": "A highly scalable and multifunctional browser extension.",
   "license": "MIT",
   "scripts": {
-    "dev:core": "pnpm --filter @aimless/extension dev",
-    "dev:test": "pnpm --filter @aimless/extension dev:test",
+    "dev:core": "pnpm --filter @aimless/browser-toolkit dev",
+    "dev:test": "pnpm --filter @aimless/browser-toolkit dev:test",
     "dev:tb": "pnpm --filter @aimless/toolbox dev",
     "dev:ms": "node build/vite.build.mjs --watch",
     "dev:doc": "pnpm --filter @aimless/docs dev",

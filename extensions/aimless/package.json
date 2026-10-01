@@ -1,9 +1,9 @@
 {
-  "name": "@aimless/extension",
+  "name": "@aimless/browser-toolkit",
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "description": "A highly scalable and multifunctional browser extension.",
+  "description": "A collection of practical browser tools for developers.",
   "scripts": {
     "dev": "wxt",
     "dev:test": "vite",

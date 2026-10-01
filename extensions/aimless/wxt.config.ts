@@ -13,6 +13,8 @@ export default defineConfig({
   modules: ['@wxt-dev/module-react', './modules/toolbox-assets.mjs'],
   outDir: resolve('.output'),
   manifest: {
+    name: 'Aimless Toolkit',
+    description: 'A collection of practical browser tools for developers.',
     web_accessible_resources: [
       {
         resources: ['json-content.js'],
