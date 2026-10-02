@@ -3,6 +3,7 @@ import {
   MenuPath,
 } from '../constants'
 // tools
+import DiffTool from '../views/diff/Diff'
 import JsonTool from '../views/json/Json'
 import URLTool from '../views/url/URL'
 
@@ -23,6 +24,11 @@ const router = createHashRouter([
     // url 处理
     path: MenuPath.TOOL_URL,
     element: <URLTool />,
+  },
+  {
+    // 代码 diff
+    path: MenuPath.TOOL_DIFF,
+    element: <DiffTool />,
   },
 ])
 
