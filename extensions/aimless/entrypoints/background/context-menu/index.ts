@@ -25,6 +25,14 @@ function createContextMenu() {
   )
   chrome.contextMenus.create(
     {
+      id: 'toolbox_diff',
+      parentId: 'toolbox',
+      title: 'Diff 工具',
+    },
+    createCallback,
+  )
+  chrome.contextMenus.create(
+    {
       id: 'toolbox_url',
       parentId: 'toolbox',
       title: 'URL 解析',
@@ -38,6 +46,11 @@ function onContextMenuClicked(info: chrome.contextMenus.OnClickData) {
     case 'toolbox_json':
       chrome.tabs.create({
         url: chrome.runtime.getURL('toolbox/index.html#/json'),
+      })
+      break
+    case 'toolbox_diff':
+      chrome.tabs.create({
+        url: chrome.runtime.getURL('toolbox/index.html#/diff'),
       })
       break
     case 'toolbox_url':

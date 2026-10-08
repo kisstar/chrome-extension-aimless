@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function App() {
-  const [message] = useState('Hello, Popup!')
+  const [message] = useState('Aimless Toolkit')
 
   return (
     <>
