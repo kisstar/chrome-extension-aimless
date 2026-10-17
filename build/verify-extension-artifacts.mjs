@@ -30,6 +30,14 @@ async function verifyExtensionArtifacts() {
       throw new Error(`${target}: content script must only run in the top frame`)
     }
 
+    const contentStyle = await readFile(
+      resolve(outputDir, 'content-scripts', 'content.css'),
+      'utf8',
+    )
+    if (!contentStyle.includes('.cea-json-editor__tool')) {
+      throw new Error(`${target}: JSON editor tool styles are missing from the content script`)
+    }
+
     const resources = manifest.web_accessible_resources ?? []
     const resourceNames = resources.flatMap(resource =>
       typeof resource === 'string' ? [resource] : resource.resources,
